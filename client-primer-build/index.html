@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Client Primer Build — Done-for-you 5-day email course | Randy Kopplin</title>
+<meta name="description" content="A custom 5-day educational email course written in your firm's voice. Filters tire-kickers, educates high-value clients before they book a call. Delivered in 21 days. Three slots per month.">
+<meta property="og:title" content="The Client Primer Build — Randy Kopplin">
+<meta property="og:description" content="A done-for-you 5-day educational email course in your firm's voice. Delivered in 21 days. Three slots per month.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theghostwritersdesk.com/client-primer-build">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800;900&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #f79546;
+    --orange-dim: rgba(247,149,70,0.55);
+    --bg-0: #0a0a0a;
+    --bg-1: #111111;
+    --bg-2: #161616;
+    --bg-card: #1a1a1a;
+    --border: rgba(255,255,255,0.07);
+    --border-warm: rgba(247,149,70,0.25);
+    --white: #ffffff;
+    --text: rgba(255,255,255,0.82);
+    --muted: rgba(255,255,255,0.45);
+    --display: 'Barlow', sans-serif;
+    --body: 'DM Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(247,149,70,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(247,149,70,0.035) 1px, transparent 1px);
+    background-size: 52px 52px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    top: -300px; left: -300px;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(247,149,70,0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  a { color: var(--orange); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  p { margin-bottom: 1em; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--white); font-weight: 600; }
+  em { color: var(--white); font-style: italic; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 5vw;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--white);
+    flex-wrap: wrap;
+  }
+  .nav-brand {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--white);
+  }
+  .nav-brand span { color: var(--orange); }
+  .nav-divider { color: var(--orange); font-weight: 400; margin: 0 0.4rem; }
+  .nav-crumb {
+    font-family: var(--body);
+    font-weight: 500;
+    font-size: 0.82rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .nav-crumb a { color: var(--muted); }
+  .nav-crumb a:hover { color: var(--orange); text-decoration: none; }
+  .nav-crumb .active { color: var(--white); }
+  .nav-cta {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--bg-0);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: opacity 0.15s ease;
+  }
+  .nav-cta:hover { opacity: 0.88; text-decoration: none; }
+
+  /* LAYOUT */
+  main { position: relative; z-index: 1; padding-top: 80px; }
+  .container { max-width: 880px; margin: 0 auto; padding: 0 5vw; }
+  .container-wide { max-width: 1080px; margin: 0 auto; padding: 0 5vw; }
+
+  /* HERO */
+  .hero {
+    padding: 90px 0 60px;
+  }
+  .hero .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    padding: 8px 16px;
+    border: 1.5px solid var(--orange-dim);
+    border-radius: 50px;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+  .hero h1 .accent { color: var(--orange); }
+  .hero .subhead {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 36px;
+  }
+  .stat-row {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+    padding: 24px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 36px;
+  }
+  .stat .label {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .stat .value {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--white);
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--bg-0);
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    padding: 18px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); text-decoration: none; }
+  .cta-btn-ghost {
+    display: inline-block;
+    background: transparent;
+    color: var(--white);
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    padding: 18px 36px;
+    border-radius: 50px;
+    border: 1.5px solid var(--border);
+    text-decoration: none;
+    margin-left: 8px;
+  }
+  .cta-btn-ghost:hover { border-color: var(--orange); color: var(--orange); text-decoration: none; }
+
+  /* SECTION */
+  .section { padding: 60px 0; }
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .section-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 40px;
+    height: 2px;
+    background: var(--orange);
+  }
+  .section h2 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(32px, 4.5vw, 48px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+  .section h3 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 24px;
+    color: var(--white);
+    margin: 36px 0 16px;
+    line-height: 1.25;
+  }
+  .section h3:first-child { margin-top: 0; }
+  .section p, .section li {
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .section ul, .section ol {
+    padding-left: 22px;
+    margin-bottom: 1em;
+  }
+  .section li { margin-bottom: 8px; }
+
+  /* PULL QUOTE */
+  .pull {
+    border-left: 3px solid var(--orange);
+    padding: 6px 0 6px 22px;
+    margin: 28px 0;
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--white);
+    letter-spacing: -0.005em;
+  }
+
+  /* BREAKDOWN TABLE */
+  .breakdown {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 24px 0;
+  }
+  .breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+  }
+  .breakdown-row:last-child { border-bottom: none; }
+  .breakdown-row .label { color: var(--text); }
+  .breakdown-row .value {
+    font-family: var(--mono);
+    font-weight: 700;
+    color: var(--orange);
+    white-space: nowrap;
+  }
+  .breakdown-total {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 2px solid var(--orange-dim);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .breakdown-total .label {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--white);
+  }
+  .breakdown-total .value {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 24px;
+    color: var(--orange);
+  }
+
+  /* DELIVERABLE CARDS */
+  .day-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 24px 0;
+  }
+  .day-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    gap: 18px;
+    align-items: center;
+  }
+  .day-item .day-num {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 26px;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .day-item .day-num-sub {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .day-item .day-content strong {
+    color: var(--white);
+    display: block;
+    font-size: 17px;
+    margin-bottom: 2px;
+  }
+  .day-item .day-content p {
+    margin: 0;
+    color: var(--text);
+    font-size: 15px;
+  }
+
+  /* TWO-COL (what's included / not) */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 24px 0;
+  }
+  @media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
+  .col-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+  }
+  .col-card h4 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 18px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .col-card.included h4 { color: var(--orange); }
+  .col-card.excluded h4 { color: var(--muted); }
+  .col-card.included h4::before {
+    content: '✓';
+    color: var(--orange);
+    font-weight: 700;
+  }
+  .col-card.excluded h4::before {
+    content: '×';
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1;
+  }
+  .col-card ul {
+    list-style: none;
+    padding: 0;
+  }
+  .col-card li {
+    padding: 6px 0;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* PROCESS STEPS */
+  .process {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin: 32px 0;
+  }
+  .process-step {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--orange);
+    border-radius: 10px;
+    padding: 22px 26px;
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 22px;
+  }
+  .process-step .step-num {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 36px;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .process-step .step-time {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .process-step h4 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 19px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .process-step p {
+    margin: 0;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* PRICE CARD */
+  .price-card {
+    background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-1) 100%);
+    border: 2px solid var(--orange);
+    border-radius: 16px;
+    padding: 40px;
+    margin: 32px 0;
+    text-align: center;
+    box-shadow: 0 0 0 6px rgba(247,149,70,0.06);
+  }
+  @media (max-width: 640px) { .price-card { padding: 28px; } }
+  .price-card .price-label {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .price-card .price {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(56px, 8vw, 88px);
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+  .price-card .price-suffix {
+    font-family: var(--body);
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+  .price-card .price-detail {
+    margin: 20px auto 24px;
+    max-width: 460px;
+    color: var(--text);
+    font-size: 16px;
+  }
+  .price-card .slots {
+    display: inline-block;
+    background: rgba(247,149,70,0.1);
+    color: var(--orange);
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 50px;
+    margin-bottom: 22px;
+  }
+
+  /* COMPARISON TABLE */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .compare-table th, .compare-table td {
+    padding: 16px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+  }
+  .compare-table th {
+    background: var(--bg-1);
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--orange);
+    text-transform: uppercase;
+  }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table .price-cell {
+    font-family: var(--mono);
+    color: var(--orange);
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  /* GUARANTEE */
+  .guarantee {
+    background: var(--bg-1);
+    border: 1px solid var(--border-warm);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 32px 0;
+  }
+  .guarantee h4 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .guarantee p { font-size: 16px; margin: 0; }
+
+  /* FAQ */
+  .faq {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  details.faq-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+    transition: border-color 0.15s ease;
+  }
+  details.faq-item[open] { border-color: var(--border-warm); }
+  details.faq-item summary {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--white);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after {
+    content: '+';
+    color: var(--orange);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  details.faq-item[open] summary::after { content: '−'; }
+  details.faq-item .answer {
+    margin-top: 14px;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    padding: 90px 0;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .cta-section h2 .accent { color: var(--orange); }
+  .cta-section p {
+    max-width: 580px;
+    margin: 0 auto 32px;
+    font-size: 19px;
+    color: var(--text);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 60px;
+  }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--orange); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <a href="/" style="text-decoration:none; color:inherit;"><span class="nav-brand">Randy <span>Kopplin</span></span></a>
+    <span class="nav-divider">·</span>
+    <span class="nav-crumb"><a href="/">Ghostwriter's Desk</a></span>
+    <span class="nav-divider">·</span>
+    <span class="nav-crumb active">Service 01</span>
+  </div>
+  <a href="#apply" class="nav-cta">Apply Now</a>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">🖋 Service 01 · Active · 3 slots/month</div>
+      <h1>The Client Primer<br><span class="accent">Build.</span></h1>
+      <p class="subhead">A custom 5-day educational email course in your firm's voice. Filters tire-kickers. Educates serious clients before they ever book a call. Delivered in 21 days.</p>
+
+      <div class="stat-row">
+        <div class="stat"><div class="label">Flat fee</div><div class="value">$1,995</div></div>
+        <div class="stat"><div class="label">Delivery</div><div class="value">21 days</div></div>
+        <div class="stat"><div class="label">Slots</div><div class="value">3/month</div></div>
+        <div class="stat"><div class="label">Format</div><div class="value">6 emails</div></div>
+      </div>
+
+      <a href="#apply" class="cta-btn">Apply for a Slot →</a>
+      <a href="#how" class="cta-btn-ghost">How it works</a>
+    </div>
+  </section>
+
+  <!-- PROBLEM / RELITY CHECK -->
+  <section class="section">
+    <div class="container">
+      <div class="section-eyebrow">The reality check</div>
+      <h2>The honest math on building it yourself.</h2>
+
+      <p>You probably already know what a Client Primer is. A 5-day educational email course that filters out low-budget leads, educates high-value clients on the *Mistakes* most people make in your project type, and earns you the right to charge for the audit instead of writing free proposals.</p>
+
+      <p>You might have even sketched the topic on the back of a fee proposal at some point this month.</p>
+
+      <p>Then you went back to running your firm.</p>
+
+      <h3>The hours</h3>
+
+      <p>A first-draft 5-day educational email course — done well — takes about <strong>20 hours of focused writing.</strong> That's not a number I made up. That's what the framework requires, and it matches what I've watched architects do when they actually sit down to build one.</p>
+
+      <p>Twenty hours sounds manageable on a Sunday morning. It rarely is.</p>
+
+      <div class="breakdown">
+        <div class="breakdown-row"><span class="label">Day 0 — The Contract</span><span class="value">~1 hour</span></div>
+        <div class="breakdown-row"><span class="label">Day 1 — The Myth (finding the right one is hardest)</span><span class="value">~3 hours</span></div>
+        <div class="breakdown-row"><span class="label">Day 2 — The Hidden Tax (real numbers from your market)</span><span class="value">~3 hours</span></div>
+        <div class="breakdown-row"><span class="label">Day 3 — The Mechanism (naming the protocol takes drafts)</span><span class="value">~4 hours</span></div>
+        <div class="breakdown-row"><span class="label">Day 4 — The Proof (picking + anonymizing a case study)</span><span class="value">~3 hours</span></div>
+        <div class="breakdown-row"><span class="label">Day 5 — The Audit Offer</span><span class="value">~2 hours</span></div>
+        <div class="breakdown-row"><span class="label">Subject lines, preview text, editing passes</span><span class="value">~4 hours</span></div>
+        <div class="breakdown-total"><span class="label">Total — best case</span><span class="value">20 hours</span></div>
+      </div>
+
+      <h3>The part nobody talks about</h3>
+
+      <p>The hours aren't the real problem. The real problem is <strong>voice.</strong></p>
+
+      <p>If your Client Primer reads like generic marketing copy, the right clients ignore it. Worse — they unsubscribe.</p>
+
+      <p>The voice has to sound like *you.* The architect with 30 years on the boards. The principal who's seen seven recessions. The sole practitioner who walks every site personally. Whatever you actually are.</p>
+
+      <p>Writing in your own voice is harder than writing well. Most architects, when they sit down to write something for marketing, default to a stiff "professional" register that sounds nothing like how they actually talk on a site visit. Fixing that takes drafts. And more drafts. And usually a partner who can hear when it's still off.</p>
+
+      <h3>The cost of "I'll get to it"</h3>
+
+      <p>I've watched dozens of firm owners read the framework, get excited, block off a Saturday, write Day 0, and then... never finish.</p>
+
+      <p>This isn't a knock. It's just what happens when you run a firm.</p>
+
+      <p class="pull">The cost of "I'll get to it" isn't the 20 hours. It's the 12 months of leads you didn't filter or educate while the asset wasn't shipped.</p>
+
+      <p>The leads you would have nurtured stay cold. The tire-kickers you would have filtered keep eating your discovery calls. The high-value clients you would have educated hire the architect who <em>did</em> build the email course.</p>
+    </div>
+  </section>
+
+  <!-- DELIVERABLE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-eyebrow">What I build for you</div>
+      <h2>Six emails. Custom. Finished.</h2>
+
+      <p>Not a template. Not a "fill in the blanks." A finished asset, built for your firm, in your voice, with your ICP's myths and hidden taxes specifically named.</p>
+
+      <h3>The deliverable</h3>
+
+      <div class="day-list">
+        <div class="day-item"><div><div class="day-num">0</div><div class="day-num-sub">Day Zero</div></div><div class="day-content"><strong>The Contract</strong><p>The welcome email that opens the loop and sets the 5-day expectation.</p></div></div>
+        <div class="day-item"><div><div class="day-num">1</div><div class="day-num-sub">Day One</div></div><div class="day-content"><strong>The Myth</strong><p>The specific lie your ICP believes about your project type, dismantled with authority.</p></div></div>
+        <div class="day-item"><div><div class="day-num">2</div><div class="day-num-sub">Day Two</div></div><div class="day-content"><strong>The Hidden Tax</strong><p>The financial cost of staying in the old way, with real numbers from your market.</p></div></div>
+        <div class="day-item"><div><div class="day-num">3</div><div class="day-num-sub">Day Three</div></div><div class="day-content"><strong>The Mechanism</strong><p>Your named, branded process for solving the problem — the <em>"[Your Mechanism Name] Protocol."</em></p></div></div>
+        <div class="day-item"><div><div class="day-num">4</div><div class="day-num-sub">Day Four</div></div><div class="day-content"><strong>The Proof</strong><p>A case study from your portfolio (anonymized if needed) showing the mechanism in action.</p></div></div>
+        <div class="day-item"><div><div class="day-num">5</div><div class="day-num-sub">Day Five</div></div><div class="day-content"><strong>The Audit Offer</strong><p>The hand-raiser email that converts students into paid Audit clients.</p></div></div>
+      </div>
+
+      <h3>Each email includes</h3>
+      <ul>
+        <li>Subject line + preview text (A/B variant for Day 0)</li>
+        <li>Body copy (~800 words, the proven length for filtering tire-kickers)</li>
+        <li>Headers, sub-headers, bulleted lists — structured like a brief, not a letter</li>
+        <li>The Loop language — back-references yesterday, teases tomorrow</li>
+      </ul>
+
+      <h3>Three delivery formats</h3>
+      <ul>
+        <li><strong>Google Doc</strong> — for review and edits</li>
+        <li><strong>Plain text</strong> — paste-ready into any email platform</li>
+        <li><strong>HTML-formatted</strong> — ready for ConvertKit, Mailchimp, MailerLite, Beehiiv, or your platform of choice</li>
+      </ul>
+
+      <h3>What makes this different from agency output</h3>
+
+      <p><strong>One — I'm an architect, not a copywriter.</strong> 52 years on real projects. I've sat through cert reviews, argued RFIs on Saturdays, watched contractors mis-spec hardware. When I write your Day 3 mechanism, I know what zoning analysis actually involves because I've done it.</p>
+
+      <p><strong>Two — I write in your voice, not mine.</strong> Before I write a word, we do a 60-minute discovery call. You talk. I record. I extract your specific cadence, the phrases you use on site visits, the war stories that animate your point of view. Then I build a custom voice profile — using Claude — that gets your voice tuned correctly before any drafting starts.</p>
+
+      <p><strong>Three — I build to the framework.</strong> Every Client Primer Build follows the same structural standard: the 5-day arc, the 800-word benchmark, the clinical-not-preachy tone, the specificity-equals-authority principle, the mechanism naming convention.</p>
+
+      <h3>What's included and what isn't</h3>
+
+      <div class="two-col">
+        <div class="col-card included">
+          <h4>Included</h4>
+          <ul>
+            <li>60-minute discovery call</li>
+            <li>Custom voice tuning</li>
+            <li>All 6 emails, end to end</li>
+            <li>Subject lines + preview text</li>
+            <li>Two rounds of revisions</li>
+            <li>Three delivery formats</li>
+            <li>A 1-page "how to wire this up" guide</li>
+          </ul>
+        </div>
+        <div class="col-card excluded">
+          <h4>Not included</h4>
+          <ul>
+            <li>Email platform account setup (ConvertKit, etc.)</li>
+            <li>Lead-magnet PDF or opt-in page design</li>
+            <li>Ongoing newsletter writing (separate retainer, coming soon)</li>
+            <li>Editing your existing copy from another source</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-eyebrow">The process</div>
+      <h2>Seven steps. 21 days. Three slots a month.</h2>
+
+      <p>Here's exactly what working together looks like — start to final delivery.</p>
+
+      <div class="process">
+        <div class="process-step">
+          <div><div class="step-num">1</div><div class="step-time">10 min</div></div>
+          <div><h4>Apply</h4><p>A short form tells me about your firm, your ICP, what you're stuck on, and which past clients are the kind of work you want more of. This is a fit check, not a sales tactic. If you're outside what I can deliver well, I'll tell you and refund the application step.</p></div>
+        </div>
+        <div class="process-step">
+          <div><div class="step-num">2</div><div class="step-time">5 min</div></div>
+          <div><h4>Pay</h4><p>If we're a fit, I send a Stripe payment link. Payment confirms your slot in the queue. No invoice, no deposits, no payment plans — flat fee, one transaction.</p></div>
+        </div>
+        <div class="process-step">
+          <div><div class="step-num">3</div><div class="step-time">60 min</div></div>
+          <div><h4>Discovery call</h4><p>Within 7 days of payment, we get on Zoom. You talk. I record. We cover your firm's history, your specific ICP, your unique mechanism, one or two real war stories, and your voice. This call is the load-bearing piece — plan to talk freely.</p></div>
+        </div>
+        <div class="process-step">
+          <div><div class="step-num">4</div><div class="step-time">1–2 days</div></div>
+          <div><h4>Voice tuning</h4><p>I take the recording, pull out 30–40 phrases that capture your voice, and build a custom Claude system prompt. I draft one test paragraph in your voice and send it to you for a thumbs-up. If it misses, we adjust the prompt before any real drafting.</p></div>
+        </div>
+        <div class="process-step">
+          <div><div class="step-num">5</div><div class="step-time">~14 days</div></div>
+          <div><h4>First draft delivery</h4><p>All six emails, in a Google Doc, with my own notes inline on the decisions I made. You'll see exactly what the Day 1 myth is, why I picked it, why I phrased it the way I did. No black box.</p></div>
+        </div>
+        <div class="process-step">
+          <div><div class="step-num">6</div><div class="step-time">~7 days</div></div>
+          <div><h4>Two rounds of revisions</h4><p>You comment in the Doc. I revise. Repeat. Two rounds covers ~95% of clients. If you need a third round, fine — at this stage I'd rather over-deliver than nickel-and-dime.</p></div>
+        </div>
+        <div class="process-step">
+          <div><div class="step-num">7</div><div class="step-time">Same day</div></div>
+          <div><h4>Final delivery</h4><p>The final 6-email Client Primer in three formats: Google Doc, plain text, HTML. Plus a 1-page "how to wire this up" guide for your email platform.</p></div>
+        </div>
+      </div>
+
+      <p style="margin-top:24px;"><strong>Total timeline:</strong> 21 days from payment to final delivery. Sometimes 18 if revisions go fast. Never longer than 30 unless we both agree to pause.</p>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="section" id="apply">
+    <div class="container">
+      <div class="section-eyebrow">The offer</div>
+      <h2>Flat fee. Capped slots. One transaction.</h2>
+
+      <div class="price-card">
+        <div class="price-label">The Client Primer Build</div>
+        <div class="price">$1,995</div>
+        <div class="price-suffix">Flat fee · One transaction</div>
+        <div class="price-detail">
+          Covers application review, 60-minute discovery, voice tuning, all 6 emails written end to end, two rounds of revisions, final delivery in three formats. No deposit. No retainer. No upsells.
+        </div>
+        <div class="slots">3 slots per month · Queue open</div>
+        <div>
+          <a href="mailto:randy@randykopplin.com?subject=Client%20Primer%20Build%20%E2%80%94%20Application&body=Hi%20Randy%2C%0A%0AI%27d%20like%20to%20apply%20for%20The%20Client%20Primer%20Build.%0A%0A--%20Firm%20name%20and%20URL%3A%0A--%20My%20role%3A%0A--%20Firm%20size%3A%0A--%20What%20kind%20of%20work%20you%20do%3A%0A--%20Location%3A%0A--%20Your%20one-sentence%20ICP%3A%0A--%20What%20you%27re%20stuck%20on%3A%0A--%20Best%20email%20and%20phone%3A%0A%0AThanks." class="cta-btn">Apply Now →</a>
+        </div>
+      </div>
+
+      <h3>What you get for the fee, vs. building it solo</h3>
+
+      <table class="compare-table">
+        <thead><tr><th>What</th><th>Solo build value</th></tr></thead>
+        <tbody>
+          <tr><td>20 hours of focused writing</td><td class="price-cell">$5,000 at $250/hr billable</td></tr>
+          <tr><td>Voice extraction + custom tuning</td><td class="price-cell">The part that's hardest to outsource cheaply</td></tr>
+          <tr><td>Architect-specific authority</td><td class="price-cell">What separates a real Primer from agency slop</td></tr>
+          <tr><td>21-day delivery vs. "I'll get to it in Q3"</td><td class="price-cell">12 months of leads you don't ship to</td></tr>
+        </tbody>
+      </table>
+
+      <div class="guarantee">
+        <h4>The guarantee</h4>
+        <p>If the test paragraph in Step 4 doesn't sound like you, and we can't tune the prompt to match within reasonable iteration, <strong>I refund the full fee minus the discovery call.</strong> I'd rather refund than ship something that doesn't sound like you. After the first draft is delivered, the project is non-refundable — the work is done.</p>
+      </div>
+
+      <p style="margin-top:24px;">Slots fill in payment order. When this month's three slots are gone, you go in the next month's queue.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-eyebrow">FAQ</div>
+      <h2>Questions before you apply.</h2>
+
+      <div class="faq">
+        <details class="faq-item">
+          <summary>Do I need to have read the framework before applying?</summary>
+          <div class="answer">No. The application asks where you are in your thinking, and I can fill gaps on the discovery call. That said, the build goes faster if you've thought through your ICP and your unique mechanism beforehand — the more clarity you bring, the more time we spend on voice rather than positioning. If you want to read the framework first, it lives inside <a href="https://www.skool.com/the-practicing-architect" target="_blank" rel="noopener">The Practicing Architect</a> community on Skool — free to join.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if my firm size or project type isn't a fit?</summary>
+          <div class="answer">The application is the fit check. If your work is genuinely outside what I can deliver well (very different vertical, unusual ICP, etc.), I'll tell you before you pay. The refund-the-application step exists exactly for this case — we both save time.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What email platform does this work with?</summary>
+          <div class="answer">All of them. ConvertKit, MailerLite, Mailchimp, Beehiiv, ActiveCampaign, Klaviyo, even self-hosted Listmonk. You get the Client Primer in three formats — Google Doc, plain text, and HTML — so you can paste into whatever you're running. I don't set up the platform itself for you, but the 1-page wiring guide walks through the most common platforms.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Will the voice actually sound like me, or like Claude?</summary>
+          <div class="answer">Like you. That's the whole point. The Step 4 voice-tuning gate exists specifically to verify this before any real writing starts. If the test paragraph misses, we iterate on the system prompt. If it can't be tuned to sound like you, you get a refund — no shipped writing that sounds off.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I see a sample of past work?</summary>
+          <div class="answer">Honest answer: this service is launching now. The first cohort of clients are establishing the case-study library. If you want to see the underlying voice and rigor before applying, my LinkedIn writing and the long-form content on this site is the best preview of how I write. Past Client Primer samples will live here once the first 5 clients have shipped theirs.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if I want more than one Client Primer (multiple ICPs)?</summary>
+          <div class="answer">Each Primer is one engagement. If you have two distinct ICPs that need separate Primers (e.g., custom residential clients vs. small commercial), that's two engagements, two flat fees, two slots in the queue. I won't try to cram two ICPs into one Primer — that's how Primers stop converting.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How does ownership work?</summary>
+          <div class="answer">You own everything. The voice profile, the emails, all formats. I keep a copy of the system prompt for my own reference (so I can help with revisions later) but you own the deliverable outright. No licensing, no resale rights for me, no commercial restrictions on your use.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Apply for a <span class="accent">Client Primer Build</span>.</h2>
+      <p>10 minutes to apply. 48-hour response. If we're a fit, you're in the queue.</p>
+      <a href="mailto:randy@randykopplin.com?subject=Client%20Primer%20Build%20%E2%80%94%20Application&body=Hi%20Randy%2C%0A%0AI%27d%20like%20to%20apply%20for%20The%20Client%20Primer%20Build.%0A%0A--%20Firm%20name%20and%20URL%3A%0A--%20My%20role%3A%0A--%20Firm%20size%3A%0A--%20What%20kind%20of%20work%20you%20do%3A%0A--%20Location%3A%0A--%20Your%20one-sentence%20ICP%3A%0A--%20What%20you%27re%20stuck%20on%3A%0A--%20Best%20email%20and%20phone%3A%0A%0AThanks." class="cta-btn">Apply Now →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p style="margin-bottom: 18px;">
+      <a href="https://www.skool.com/the-practicing-architect" target="_blank" rel="noopener" style="color: var(--orange);">→ Join The Practicing Architect community on Skool</a>
+    </p>
+    <p>© 2026 Randy Kopplin. <a href="/">The Ghostwriter's Desk</a> · <a href="https://randykopplin.com">randykopplin.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
