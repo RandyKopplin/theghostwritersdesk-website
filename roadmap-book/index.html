@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Roadmap Book Build | The Ghostwriter's Desk</title>
+<meta name="description" content="Stop writing free proposals. We build the branded Project Feasibility Roadmap template your firm uses to sell $1,500 paid audits. Done in two weeks. $2,500 one-time.">
+
+<meta property="og:title" content="The Roadmap Book Build | The Ghostwriter's Desk">
+<meta property="og:description" content="A done-for-you Project Feasibility Roadmap template, branded for your firm. Sell $1,500 audits instead of writing free proposals.">
+<meta property="og:url" content="https://theghostwritersdesk.com/roadmap-book">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;700;800;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --orange: #f79546;
+    --orange-bright: #ffb26b;
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --gray: #6b6b6b;
+    --gray-light: #9a9a9a;
+    --light: #f4f4f2;
+    --dark-gray: #1a1a1a;
+    --font-display: 'Barlow', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--light);
+    color: var(--black);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+  /* ===== Nav ===== */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--black);
+    height: 64px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(247,149,70,0.15);
+    overflow: hidden;
+  }
+  .nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(247,149,70,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(247,149,70,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .nav-left, .nav-right {
+    position: relative; z-index: 1;
+    display: flex; align-items: center; gap: 18px;
+  }
+  .brand {
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--white);
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .brand .divider { color: var(--orange); font-weight: 400; }
+  .brand .desk {
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+  .nav-context {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+  }
+  .nav-cta {
+    background: var(--orange);
+    color: var(--black);
+    padding: 10px 22px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 2px solid var(--orange);
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .nav-cta:hover { background: var(--orange-bright); border-color: var(--orange-bright); }
+
+  /* ===== Section wrappers ===== */
+  .dark {
+    background: var(--black);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  .dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(247,149,70,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(247,149,70,0.05) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .glow-tr::after {
+    content: '';
+    position: absolute;
+    top: -15%; right: -10%;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(247,149,70,0.13) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .glow-tl::after {
+    content: '';
+    position: absolute;
+    top: -15%; left: -10%;
+    width: 520px; height: 520px;
+    background: radial-gradient(circle, rgba(247,149,70,0.13) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .glow-center::after {
+    content: '';
+    position: absolute;
+    top: -20%; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(247,149,70,0.11) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .light { background: var(--light); }
+
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== Typography ===== */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 18px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--orange);
+    opacity: 0.2;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+  }
+  .dark .section-title { color: var(--white); }
+  .section-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--gray);
+    max-width: 680px;
+    margin-bottom: 48px;
+    line-height: 1.7;
+  }
+  .dark .section-sub { color: var(--gray-light); }
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 14px;
+  }
+  p { font-size: 17px; line-height: 1.75; margin-bottom: 22px; color: #2a2a2a; }
+  .dark p { color: #c4c4c4; }
+  p em, em { font-style: italic; color: var(--orange); font-weight: 500; }
+  strong { font-weight: 700; }
+  .dark strong { color: var(--white); }
+
+  /* ===== Hero ===== */
+  .hero { padding: 110px 0 130px; position: relative; }
+  .hero-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 28px;
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(48px, 7vw, 88px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 32px;
+    max-width: 1000px;
+  }
+  .hero-title .accent { color: var(--orange); }
+  .hero-sub {
+    font-size: 20px;
+    font-weight: 300;
+    color: #c4c4c4;
+    line-height: 1.6;
+    margin-bottom: 36px;
+    max-width: 720px;
+  }
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 44px;
+    flex-wrap: wrap;
+  }
+  .hero-stat {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    padding: 12px 22px;
+    border: 1.5px solid rgba(247,149,70,0.4);
+  }
+  .hero-stat .num { color: var(--orange); }
+  .btn-primary {
+    background: var(--orange);
+    color: var(--black);
+    padding: 18px 38px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 2px solid var(--orange);
+    display: inline-block;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .btn-primary:hover { background: var(--orange-bright); border-color: var(--orange-bright); }
+  .btn-arrow { margin-left: 8px; }
+
+  /* ===== Reality check (Section 1, light) ===== */
+  .reality { padding: 110px 0; }
+  .reality .section-title { color: var(--black); }
+  .reality .lede { font-size: 22px; line-height: 1.5; font-weight: 400; color: var(--black); max-width: 800px; margin-bottom: 32px; }
+  .stat-callout {
+    background: var(--black);
+    color: var(--white);
+    padding: 28px 36px;
+    margin: 36px 0;
+    max-width: 720px;
+    border-left: 4px solid var(--orange);
+  }
+  .stat-callout .lbl {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 8px;
+  }
+  .stat-callout .val {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 30px;
+    line-height: 1.1;
+  }
+  .cost-list {
+    list-style: none;
+    margin: 28px 0 32px;
+    max-width: 740px;
+  }
+  .cost-list li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(14,14,14,0.1);
+    font-size: 16px;
+  }
+  .cost-list .hrs { color: var(--orange); font-family: var(--font-mono); font-weight: 500; font-size: 13px; letter-spacing: 0.06em; }
+
+  /* ===== What I Build (Section 2, dark) ===== */
+  .build { padding: 110px 0; }
+  .build .section-title { color: var(--white); }
+  .build-h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 22px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(247,149,70,0.25);
+  }
+
+  /* Row 1: full-width TOC presented as a two-column list */
+  .toc-block { margin-top: 40px; }
+  .toc-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 56px;
+    row-gap: 0;
+  }
+  @media (max-width: 900px) { .toc-list { grid-template-columns: 1fr; } }
+  .toc-list li {
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 15px;
+    line-height: 1.55;
+    color: #c4c4c4;
+  }
+  .toc-list .num {
+    font-family: var(--font-mono);
+    color: var(--orange);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding-top: 2px;
+  }
+  .toc-list strong { color: var(--white); }
+
+  /* Row 2: two equal-height cards */
+  .build-row2 {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  @media (max-width: 900px) { .build-row2 { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--dark-gray);
+    border: 1px solid rgba(247,149,70,0.18);
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+  }
+  .card-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 18px;
+  }
+  .card h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  .versions-list { list-style: none; counter-reset: ver; flex: 1; }
+  .versions-list li {
+    counter-increment: ver;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: grid;
+    grid-template-columns: 32px 1fr;
+    gap: 14px;
+  }
+  .versions-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .versions-list li::before {
+    content: counter(ver, decimal-leading-zero);
+    font-family: var(--font-display);
+    font-weight: 800;
+    color: var(--orange);
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .versions-list li strong { display: block; color: var(--white); margin-bottom: 4px; font-size: 15px; }
+  .versions-list li span { color: var(--gray-light); font-size: 14px; line-height: 1.55; }
+
+  .extras-list { list-style: none; flex: 1; }
+  .extras-list li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 14px;
+    line-height: 1.55;
+    color: #c4c4c4;
+  }
+  .extras-list li:last-child { border-bottom: none; padding-bottom: 0; }
+  .extras-list .check {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--orange);
+    display: inline-block;
+    margin-top: 2px;
+  }
+  .extras-list strong { color: var(--white); display: block; margin-bottom: 4px; font-size: 15px; }
+
+  /* Row 3: full-width exclusions */
+  .exclusions {
+    margin-top: 56px;
+    background: rgba(247,149,70,0.04);
+    border-left: 3px solid var(--orange);
+    padding: 32px 40px;
+  }
+  .exclusions .lbl {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 18px;
+  }
+  .exclusions ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  @media (max-width: 900px) { .exclusions ul { grid-template-columns: 1fr; gap: 14px; } }
+  .exclusions li {
+    padding: 0 0 0 24px;
+    position: relative;
+    color: #c4c4c4;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .exclusions li::before {
+    content: '\00d7';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 18px;
+  }
+
+  /* ===== Process (Section 3, light) ===== */
+  .process { padding: 110px 0; background: var(--white); }
+  .process .section-title { color: var(--black); }
+  .timeline {
+    margin-top: 48px;
+    position: relative;
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 36px;
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(14,14,14,0.08);
+  }
+  .timeline-item:last-child { border-bottom: none; }
+  .timeline-day {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    padding-top: 6px;
+  }
+  .timeline-day .big {
+    font-size: 36px;
+    line-height: 1;
+    display: block;
+    color: var(--black);
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+  }
+  .timeline-body h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: 12px;
+    color: var(--black);
+  }
+  .timeline-body p { color: #2a2a2a; font-size: 16px; margin-bottom: 0; }
+  .timeline-body ul { margin-top: 10px; padding-left: 18px; color: #2a2a2a; font-size: 16px; }
+  .timeline-body ul li { margin-bottom: 6px; }
+  .after-note {
+    margin-top: 48px;
+    padding: 28px 32px;
+    background: var(--black);
+    color: var(--white);
+    max-width: 760px;
+    border-left: 4px solid var(--orange);
+  }
+  .after-note p { color: #c4c4c4; margin-bottom: 0; }
+  .after-note strong { color: var(--white); }
+
+  /* ===== Offer (Section 4, dark) ===== */
+  .offer { padding: 110px 0; }
+  .offer .section-title { color: var(--white); }
+  .price-block {
+    margin-top: 8px;
+    margin-bottom: 48px;
+    display: flex;
+    align-items: baseline;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .price {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: clamp(64px, 9vw, 112px);
+    line-height: 1;
+    color: var(--orange);
+    letter-spacing: -0.03em;
+  }
+  .price-note {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gray-light);
+    line-height: 1.6;
+  }
+  .price-note strong { color: var(--white); }
+  .math-list {
+    list-style: none;
+    max-width: 760px;
+    margin-bottom: 44px;
+  }
+  .math-list li {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 17px;
+    color: #c4c4c4;
+  }
+  .math-list li:last-child { border-bottom: none; }
+  .math-list strong { color: var(--white); }
+  .fit-check {
+    background: rgba(247,149,70,0.04);
+    border: 1px solid rgba(247,149,70,0.2);
+    padding: 32px 36px;
+    max-width: 780px;
+    margin-bottom: 44px;
+  }
+  .fit-check .lbl {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 18px;
+  }
+  .fit-check ul { list-style: none; }
+  .fit-check li {
+    padding: 10px 0 10px 26px;
+    position: relative;
+    color: var(--white);
+    font-size: 15px;
+    line-height: 1.55;
+  }
+  .fit-check li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 16px;
+    width: 14px; height: 14px;
+    border: 1.5px solid var(--orange);
+  }
+  .closing-line {
+    color: #c4c4c4;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 36px;
+    max-width: 720px;
+  }
+  .offer-cta-row {
+    display: flex; align-items: center; gap: 28px;
+    flex-wrap: wrap;
+  }
+  .offer-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  /* ===== FAQ ===== */
+  .faq { padding: 110px 0; background: var(--light); }
+  .faq .section-title { color: var(--black); }
+  .faq-list { margin-top: 40px; max-width: 880px; }
+  .faq-item {
+    border-bottom: 1px solid rgba(14,14,14,0.1);
+    padding: 26px 0;
+  }
+  .faq-item:first-child { border-top: 1px solid rgba(14,14,14,0.1); }
+  .faq-q {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 19px;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    color: var(--black);
+    margin-bottom: 10px;
+  }
+  .faq-a { color: #2a2a2a; font-size: 16px; line-height: 1.7; margin-bottom: 0; }
+
+  /* ===== Footer ===== */
+  footer {
+    background: var(--black);
+    color: var(--gray-light);
+    padding: 56px 0 40px;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(247,149,70,0.15);
+  }
+  footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(247,149,70,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(247,149,70,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+  }
+  .footer-row {
+    position: relative; z-index: 1;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 12px; }
+  .footer-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 720px) {
+    .nav { padding: 0 20px; }
+    .nav-context { display: none; }
+    .container { padding: 0 24px; }
+    .hero { padding: 70px 0 90px; }
+    .reality, .build, .process, .offer, .faq { padding: 80px 0; }
+    .timeline-item { grid-template-columns: 1fr; gap: 14px; }
+    .build-grid { gap: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============== NAV ============== -->
+<nav class="nav">
+  <div class="nav-left">
+    <a href="/" class="brand">
+      <span>The Practicing Architect</span>
+      <span class="divider">/</span>
+      <span class="desk">The Ghostwriter's Desk</span>
+    </a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-context">Service 02 &middot; Roadmap Book</span>
+    <a href="#apply" class="nav-cta">Apply for a Slot</a>
+  </div>
+</nav>
+
+<!-- ============== HERO ============== -->
+<section class="dark glow-tr">
+  <div class="container hero">
+    <div class="hero-eyebrow">Service 02 &nbsp;/&nbsp; The Ghostwriter's Desk</div>
+    <h1 class="hero-title">Stop writing free proposals. <span class="accent">Start charging for the diagnosis.</span></h1>
+    <p class="hero-sub">We build the branded Project Feasibility Roadmap template your firm uses to sell $1,500 paid audits, instead of giving away $4,000 worth of unbillable thinking every time someone asks for a number.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="num">$2,500</span> One-time</div>
+      <div class="hero-stat"><span class="num">14 Day</span> Build</div>
+      <div class="hero-stat"><span class="num">2 Slots</span> Per Month</div>
+    </div>
+    <a href="#apply" class="btn-primary">Apply for a Slot <span class="btn-arrow">&rarr;</span></a>
+  </div>
+</section>
+
+<!-- ============== SECTION 1: REALITY CHECK ============== -->
+<section class="reality light">
+  <div class="container">
+    <div class="section-label">Section 01 &middot; The Reality Check</div>
+    <h2 class="section-title">What it actually costs to build this from scratch.</h2>
+
+    <p class="lede">Look. Let me tell you about a proposal that still hurts to drive past.</p>
+
+    <p>Boutique mixed-use development in the historic district. Sixty-five hours of unbillable work over two weeks. Deep dives into local zoning. Walking the site at different times of day to understand the light. Preliminary massing models. Two finished high-res conceptual renderings. I coordinated with our structural engineer just to confirm the cantilevered overhang was buildable before we pitched it.</p>
+
+    <p>The pitch landed. The client called it <em>stunning.</em></p>
+
+    <p>Then they hired a volume-driven design-build firm. That building is still on that corner.</p>
+
+    <div class="stat-callout">
+      <div class="lbl">Total value on the table</div>
+      <div class="val">$97,500. Outcome: zero.</div>
+    </div>
+
+    <p>That was the moment I decided I'd never write another free proposal as long as I lived. The fix is simple. Charge $1,500 for a Feasibility Audit. Deliver a real Project Feasibility Roadmap at the end. Filter out tire-kickers, get paid from day one, and walk into every follow-on contract as the expert who already diagnosed the project, instead of the vendor still auditioning.</p>
+
+    <p>Simple isn't the same as easy.</p>
+
+    <p>Because to actually <em>deliver</em> a $1,500 audit, you need the Roadmap itself. A real one. Thirty-six pages. Branded to your firm. Polished enough that the developer reads it and thinks <em>"these are the only architects in town who think this clearly."</em></p>
+
+    <p><strong>Here's what building one from scratch costs you:</strong></p>
+
+    <ul class="cost-list">
+      <li><span>Outline and section logic</span><span class="hrs">8 hours</span></li>
+      <li><span>Page layout, type system, brand integration</span><span class="hrs">12 to 16 hours</span></li>
+      <li><span>Sample-filled version so your team knows what "done" looks like</span><span class="hrs">10 hours</span></li>
+      <li><span>Intake questionnaire, fee schedule, sales script, delivery checklist</span><span class="hrs">8 hours</span></li>
+      <li><span>Three revision passes you'll do once you actually use it</span><span class="hrs">12 hours</span></li>
+    </ul>
+
+    <p><strong>Conservatively, 50 hours.</strong> At $250 an hour, and you should bill more than that, you're looking at <strong>$12,500</strong> of your own time, before you've sold the first audit.</p>
+
+    <p>Most architects who say <em>"I'll just build my own"</em> don't. Eighteen months later they're still writing free proposals.</p>
+
+    <p>You don't need to be the person who builds the deliverable. You need to be the person who <em>sells</em> it.</p>
+  </div>
+</section>
+
+<!-- ============== SECTION 2: WHAT I BUILD ============== -->
+<section class="dark glow-tl build">
+  <div class="container">
+    <div class="section-label">Section 02 &middot; What I Build For You</div>
+    <h2 class="section-title">The 36-page Project Feasibility Roadmap. Branded, ready, yours.</h2>
+    <p class="section-sub">Two weeks from kickoff. Done.</p>
+
+    <!-- Row 1: full-width TOC -->
+    <div class="toc-block">
+      <div class="build-h4">The Roadmap Template &middot; 36 pages, your brand</div>
+      <ul class="toc-list">
+        <li><span class="num">01</span><span>Cover, title page, executive summary</span></li>
+        <li><span class="num">02</span><span><strong>Part 1. The Diagnosis.</strong> Stated goals plus what you heard between the lines.</span></li>
+        <li><span class="num">03</span><span><strong>Part 2. What You Can Build.</strong> Site analysis, zoning envelope, program possibilities, three labeled massing studies, recommended direction.</span></li>
+        <li><span class="num">04</span><span><strong>Part 3. What It Will Cost.</strong> Budget reality, hard-cost ranges, soft costs, total range, the five levers that move the number.</span></li>
+        <li><span class="num">05</span><span><strong>Part 4. How Long It Will Take.</strong> Approval pathway, design timeline, construction timeline, critical-path dates.</span></li>
+        <li><span class="num">06</span><span><strong>Part 5. The Path Forward.</strong> Next steps, decisions in the next 30 days, what we'd do if this were our project, risks to mitigate first.</span></li>
+        <li><span class="num">07</span><span>Back matter. Methodology, site appendix, zoning references, comparables, engagement options.</span></li>
+      </ul>
+    </div>
+
+    <!-- Row 2: two balanced cards -->
+    <div class="build-row2">
+      <div class="card">
+        <div class="card-label">Three Versions Ship</div>
+        <h3>Yours to use, modify, and reuse forever</h3>
+        <ol class="versions-list">
+          <li><div><strong>The editable master</strong><span>Built in Figma. Yours to modify forever.</span></div></li>
+          <li><div><strong>A fully-filled sample</strong><span>Populated with a real project of yours, chosen during onboarding, so your team sees what <em>finished</em> looks like.</span></div></li>
+          <li><div><strong>A blank starter</strong><span>Placeholder text in every section, ready for the next audit you sell.</span></div></li>
+        </ol>
+      </div>
+
+      <div class="card">
+        <div class="card-label">Plus The Working Materials</div>
+        <h3>Everything you need to run the offer</h3>
+        <ul class="extras-list">
+          <li><span class="check"></span><span><strong>Client intake questionnaire</strong>The form you send a prospect to gather everything you need before the audit starts.</span></li>
+          <li><span class="check"></span><span><strong>Fee schedule and engagement letter</strong>The $1,500 audit agreement, ready to send. Includes bridge language to follow-on design phases.</span></li>
+          <li><span class="check"></span><span><strong>Sales script</strong>What to say when a prospect asks you for a free proposal. Word for word.</span></li>
+          <li><span class="check"></span><span><strong>Delivery checklist</strong>Internal SOP for producing each Roadmap consistently in two weeks.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Row 3: full-width exclusions -->
+    <div class="exclusions">
+      <div class="lbl">What's NOT included &middot; so we're clear</div>
+      <ul>
+        <li>I do not write the <em>content</em> of your client's Roadmaps. You do. This is a template plus working materials, not a ghostwriting retainer.</li>
+        <li>I do not coach you on sales calls. The script is the script.</li>
+        <li>I do not white-label this to your client. The template is <em>yours.</em> You own it.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 3: PROCESS ============== -->
+<section class="process">
+  <div class="container">
+    <div class="section-label">Section 03 &middot; The Process</div>
+    <h2 class="section-title">Kickoff to delivery in 14 days.</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-day"><span class="big">00</span>Apply</div>
+        <div class="timeline-body">
+          <h4>Application + Payment</h4>
+          <p>Fill out the application below. I review within 48 hours. If we're a fit, you get an invoice for $2,500. Paid invoice locks your slot.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-day"><span class="big">01</span>Onboarding</div>
+        <div class="timeline-body">
+          <h4>60-Minute Recorded Call</h4>
+          <p>We work through:</p>
+          <ul>
+            <li>Your firm's brand pack (logo, fonts, colors, two sample covers you like)</li>
+            <li>Which 3D modeling stack you use (Revit, SketchUp, Rhino, or Forma) and how you'll export massing studies</li>
+            <li>One real project of yours to use as the "filled sample." Your future first Roadmap, basically.</li>
+            <li>The voice on pages 6, 12, and 24, the three pages where your firm's judgment becomes the product</li>
+            <li>The three or four sentences that go in <em>About the firm</em></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-day"><span class="big">02</span>Handoff</div>
+        <div class="timeline-body">
+          <h4>You Send The Assets</h4>
+          <p>Brand pack, sample project materials, three massing exports. Standard list, no surprises.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-day"><span class="big">3&ndash;9</span>I Build</div>
+        <div class="timeline-body">
+          <h4>Figma File, 36 Pages, Your Brand</h4>
+          <p>Sample project plugged in. Plus the four working-materials files.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-day"><span class="big">10</span>Preview</div>
+        <div class="timeline-body">
+          <h4>Draft Delivery</h4>
+          <p>Full preview link. You mark up anything that needs to move.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-day"><span class="big">11&ndash;13</span>Revisions</div>
+        <div class="timeline-body">
+          <h4>Two Revision Passes</h4>
+          <p>I incorporate your edits across two rounds. After that the template is locked. Once you're using it live, you'll keep refining it forever in your own Figma file.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-day"><span class="big">14</span>Delivery</div>
+        <div class="timeline-body">
+          <h4>Final Files + Walkthrough</h4>
+          <p>You get the Figma master, the filled sample, the blank starter, and the four working-materials documents. Plus a 30-minute "how to use this" walkthrough so your team is operational on day one.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="after-note">
+      <p>After that, <strong>you own it. Forever.</strong> No retainer, no recurring fees, no usage limits. The next 100 audits you sell are pure margin.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== SECTION 4: OFFER ============== -->
+<section class="dark glow-center offer" id="apply">
+  <div class="container">
+    <div class="section-label">Section 04 &middot; The Offer</div>
+    <h2 class="section-title">$2,500. Two slots a month. That's it.</h2>
+
+    <div class="price-block">
+      <div class="price">$2,500</div>
+      <div class="price-note">
+        <strong>One-time</strong><br>
+        Not a subscription.<br>
+        Not a retainer.
+      </div>
+    </div>
+
+    <p class="section-sub">The math is straightforward.</p>
+
+    <ul class="math-list">
+      <li>You sell <strong>one</strong> Feasibility Audit at $1,500. You've paid down 60% of the build.</li>
+      <li>You sell <strong>two</strong>. You're profitable, and the next 98 are pure margin.</li>
+      <li>You sell <strong>zero</strong>? Your firm has a deeper problem than a template can fix.</li>
+    </ul>
+
+    <p><strong>Two slots per month. Not artificial scarcity. That's actual production capacity if I'm going to do this well.</strong></p>
+    <p>When a month closes, the next opening rolls to the following month. Wait-listed applicants get first call.</p>
+
+    <div class="fit-check">
+      <div class="lbl">The Fit Check</div>
+      <ul>
+        <li>You're a licensed architect or firm principal</li>
+        <li>You're done writing free proposals</li>
+        <li>You have at least one real project (built or in design) we can use as the filled sample</li>
+        <li>You have someone on your team who can produce a basic 3D massing export</li>
+      </ul>
+    </div>
+
+    <p class="closing-line">If that's you, apply below. If it isn't, the application will tell you so honestly. No high-pressure sequence, no follow-up emails for six months.</p>
+
+    <div class="offer-cta-row">
+      <a href="mailto:randy@randykopplin.com?subject=Roadmap%20Book%20Build%20%E2%80%94%20Application&body=Hi%20Randy%2C%0A%0AI%27d%20like%20to%20apply%20for%20The%20Roadmap%20Book%20Build.%0A%0A--%20Firm%20name%20and%20URL%3A%0A--%20My%20role%3A%0A--%20Firm%20size%3A%0A--%20State%28s%29%20licensed%20in%3A%0A--%20How%20many%20free%20proposals%20you%20wrote%20last%20year%20%28approx%29%3A%0A--%20A%20real%20project%20you%27d%20want%20to%20use%20as%20the%20filled%20sample%20%28name%20%2B%20one-line%20description%29%3A%0A--%203D%20modeling%20tool%20your%20firm%20uses%20%28Revit%20%2F%20SketchUp%20%2F%20Rhino%20%2F%20Forma%20%2F%20other%29%3A%0A--%20Can%20someone%20on%20your%20team%20produce%20massing%20exports%3F%20%28Yes%20%2F%20Maybe%20%2F%20No%29%3A%0A--%20Best%20email%20and%20phone%3A%0A%0AThanks." class="btn-primary">Apply for a Roadmap Book Build Slot <span class="btn-arrow">&rarr;</span></a>
+      <div class="offer-meta">Email Randy &middot; ~3 minutes</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FAQ ============== -->
+<section class="faq">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Questions before you apply.</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">What if I already have a deliverable template I use?</div>
+        <p class="faq-a">You probably don't have one that filters tire-kickers and bridges to a follow-on design contract on page 31. If you do, you don't need this.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I see a sample before I apply?</div>
+        <p class="faq-a">I'll send a 6-page preview after the application. Enough to evaluate the work, not enough to copy it.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Do you white-label to my clients?</div>
+        <p class="faq-a">No. The template is <em>yours.</em> Your brand, your firm. I don't appear in it anywhere.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if my firm doesn't have a 3D modeler?</div>
+        <p class="faq-a">Then the Standard tier isn't the right fit. There's a Signature tier where I produce the massing studies myself. It's a different conversation, drop me a note.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What if I want changes after delivery?</div>
+        <p class="faq-a">The Figma file is yours. Change anything. Forever.</p>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Refund policy?</div>
+        <p class="faq-a">Once the build is in motion (day 3 onward), no refunds. Before that, full refund minus a $250 application and onboarding fee.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FOOTER ============== -->
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-brand brand">
+        <span>The Practicing Architect</span>
+        <span class="divider">/</span>
+        <span class="desk">The Ghostwriter's Desk</span>
+      </div>
+      <div class="footer-meta">Randy Kopplin, AIA &nbsp;&middot;&nbsp; 52 Years in AEC</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
