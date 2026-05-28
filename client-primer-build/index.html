@@ -146,6 +146,15 @@
     border: 1.5px solid var(--orange-dim);
     border-radius: 50px;
   }
+  .hero .outcome-line {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
   .hero h1 {
     font-family: var(--display);
     font-weight: 900;
@@ -636,6 +645,66 @@
     color: var(--text);
   }
 
+  /* SAMPLE CARD */
+  .sample-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-warm);
+    border-radius: 4px;
+    padding: 36px;
+    margin-top: 32px;
+  }
+  @media (max-width: 640px) { .sample-card { padding: 24px; } }
+  .sample-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sample-subject, .sample-preview {
+    font-family: var(--body);
+    font-size: 16px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .sample-subject strong, .sample-preview strong {
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-right: 8px;
+  }
+  .sample-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 24px 0;
+  }
+  .sample-body {
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .sample-body p { margin-bottom: 16px; }
+  .sample-body p.myth {
+    background: rgba(247,149,70,0.08);
+    border-left: 3px solid var(--orange);
+    padding: 16px 20px;
+    color: var(--white);
+    font-weight: 600;
+  }
+  .sample-body p.signoff {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 24px;
+  }
+  .sample-body p.signoff strong { color: var(--text); }
+
   /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
@@ -668,8 +737,9 @@
   <section class="hero">
     <div class="container">
       <div class="eyebrow">🖋 Service 01 · Active · 3 slots/month</div>
+      <p class="outcome-line">Turn cold inquiries into paid audits.</p>
       <h1>The Client Primer<br><span class="accent">Build.</span></h1>
-      <p class="subhead">A custom 5-day educational email course in your firm's voice. Filters tire-kickers. Educates serious clients before they ever book a call. Delivered in 21 days.</p>
+      <p class="subhead">A custom 5-day educational email course in your firm's voice. Filters tire-kickers. Educates serious clients before they ever book a call. Earns you the right to charge $1,500+ for the audit instead of writing free proposals. Delivered in 21 days.</p>
 
       <div class="stat-row">
         <div class="stat"><div class="label">Flat fee</div><div class="value">$1,995</div></div>
@@ -804,6 +874,59 @@
     </div>
   </section>
 
+  <!-- SAMPLE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-eyebrow">A real sample</div>
+      <h2>What a Day 1 actually reads like.</h2>
+
+      <p>Every Client Primer Build is custom — built for the firm's voice and ICP, not pulled from a template. The Day 1 email below is a composite, written for a fictional senior-living architecture firm I use as a development persona. The firm is not real. The voice, structure, and operational specificity are exactly what gets shipped to paying clients.</p>
+
+      <div class="sample-card">
+        <div class="sample-meta">Sample · Day 1: The Myth · Composite senior-living architecture firm</div>
+        <div class="sample-subject"><strong>Subject:</strong> The most expensive myth in senior-living development</div>
+        <div class="sample-preview"><strong>Preview:</strong> Building to code doesn't protect what you actually paid for.</div>
+        <div class="sample-divider"></div>
+
+        <div class="sample-body">
+          <p>Yesterday I promised one specific lie that senior-living developers keep paying for.</p>
+
+          <p>Here it is.</p>
+
+          <p class="myth">The myth: "If we build to code, we're protected."</p>
+
+          <p>Code is a floor, not a finish line. It's the minimum a building can be without exposing the owner to immediate legal risk. It says nothing about whether the building protects the operator's margin for thirty years. Nothing about whether the building keeps vulnerable residents safe past the certificate of occupancy. Nothing about whether the building holds its refinance valuation in year fifteen.</p>
+
+          <p>Code-compliant buildings fail residents and operators every week. Not because the code was violated. Because the code was never designed to do the job developers assume it does.</p>
+
+          <p>Three places I see this play out, every project.</p>
+
+          <p><strong>Envelope.</strong> Code says you need an exterior wall that meets thermal performance to a specific R-value at construction. It doesn't say the wall has to hold that R-value in year twenty. If a developer value-engineers the envelope down to foam board that off-gases and loses twenty percent of its thermal performance over two decades, the building is fully code-compliant on day one. The operator pays an extra $40,000 to $60,000 a year in heating and cooling for the life of the asset.</p>
+
+          <p><strong>HVAC.</strong> Code says you need a system that delivers a specific air change rate. It doesn't say the system has to be quiet enough that memory care residents can sleep through it. Cheap PTAC installations meet code and short-cycle every fifteen minutes. The residents wake up agitated. Behavioral incidents go up. Night-shift overtime goes up. The operator loses money to a code-compliant decision the developer never reviewed.</p>
+
+          <p><strong>Means of egress.</strong> Code says corridor widths, door swings, exit signage. It doesn't say corridors have to be intuitive enough for a resident with mild cognitive impairment to find the dining room without prompting. A code-compliant building with poor wayfinding is a building where staff spends an extra ninety minutes a day redirecting confused residents. That cost compounds. Every year. For thirty years.</p>
+
+          <p>I don't blame developers for believing the myth. The code book is intimidating. The architect signs and seals. The certificate of occupancy arrives. The asset opens. Everything feels protected.</p>
+
+          <p>The job of an architect who actually understands senior-living development isn't to deliver a code-compliant building. It's to deliver an asset that performs against the operator's twenty-year proforma.</p>
+
+          <p>Those are not the same building.</p>
+
+          <p>Tomorrow I'm going to show you the dollar math on the gap between the two. The numbers will make a developer who has been underwriting to construction cost think differently about what they actually paid for.</p>
+
+          <p>That's Day 2.</p>
+
+          <p class="signoff">— <strong>Karl Westworth, AIA</strong><br>Principal, Meridian Healthcare Architects<br><em>Designing for Operational Excellence</em></p>
+
+          <p class="signoff"><strong>P.S.</strong> The hardest part of stewardship architecture isn't choosing the better spec. It's having someone on the project who knows the difference between a code-compliant assembly and an operationally-performing one. Most projects don't have that person. The ones that do are the ones that refinance higher in year five.</p>
+        </div>
+      </div>
+
+      <p style="margin-top:32px; font-size:15px; color:var(--muted);">Voice and content vary per engagement. What stays consistent across every Build: the ~800-word benchmark, the 5-day arc, the operational-specificity-equals-authority principle, and the 30-to-40 phrase voice profile that gets the cadence right before any drafting starts.</p>
+    </div>
+  </section>
+
   <!-- PROCESS -->
   <section class="section" id="how">
     <div class="container">
@@ -815,7 +938,7 @@
       <div class="process">
         <div class="process-step">
           <div><div class="step-num">1</div><div class="step-time">10 min</div></div>
-          <div><h4>Apply</h4><p>A short form tells me about your firm, your ICP, what you're stuck on, and which past clients are the kind of work you want more of. This is a fit check, not a sales tactic. If you're outside what I can deliver well, I'll tell you and refund the application step.</p></div>
+          <div><h4>Apply</h4><p>A short email form tells me about your firm, your ICP, what you're stuck on, and which past clients are the kind of work you want more of. The application is free. It's a fit check, not a sales tactic. If you're outside what I can deliver well, I'll tell you before you pay a dime.</p></div>
         </div>
         <div class="process-step">
           <div><div class="step-num">2</div><div class="step-time">5 min</div></div>
@@ -867,14 +990,14 @@
         <p style="margin-top:20px; margin-bottom:0; font-size:14px; color:var(--muted); text-align:center;">Not ready to apply? <a href="/book">Book a free 15-minute fit-check call →</a></p>
       </div>
 
-      <h3>What you get for the fee, vs. building it solo</h3>
+      <h3>What you actually get, and what the market charges for the equivalent</h3>
 
       <table class="compare-table">
-        <thead><tr><th>What</th><th>Solo build value</th></tr></thead>
+        <thead><tr><th>What you get</th><th>What the market charges</th></tr></thead>
         <tbody>
-          <tr><td>20 hours of focused writing</td><td class="price-cell">$5,000 at $250/hr billable</td></tr>
-          <tr><td>Voice extraction + custom tuning</td><td class="price-cell">The part that's hardest to outsource cheaply</td></tr>
-          <tr><td>Architect-specific authority</td><td class="price-cell">What separates a real Primer from agency slop</td></tr>
+          <tr><td>A comparable 5-email educational sequence from a marketing agency</td><td class="price-cell">$3,000–$8,000 typical market range</td></tr>
+          <tr><td>Tire-kicker leads filtered out before they eat your discovery calls</td><td class="price-cell">Several hours per month of recovered time</td></tr>
+          <tr><td>Paid audits instead of free proposals at the end of the funnel</td><td class="price-cell">$1,500–$5,000 per audit, several per quarter once the Primer is running</td></tr>
           <tr><td>21-day delivery vs. "I'll get to it in Q3"</td><td class="price-cell">12 months of leads you don't ship to</td></tr>
         </tbody>
       </table>
@@ -897,7 +1020,7 @@
       <div class="faq">
         <details class="faq-item">
           <summary>What if my firm size or project type isn't a fit?</summary>
-          <div class="answer">The application is the fit check. If your work is genuinely outside what I can deliver well (very different vertical, unusual ICP, etc.), I'll tell you before you pay. The refund-the-application step exists exactly for this case — we both save time.</div>
+          <div class="answer">The application is the fit check. The application itself is a free email — nothing to refund. If your work is genuinely outside what I can deliver well (very different vertical, unusual ICP, etc.), I'll tell you before you pay. I'd rather lose the engagement than waste your time and mine on a build that won't land.</div>
         </details>
 
         <details class="faq-item">
@@ -912,7 +1035,7 @@
 
         <details class="faq-item">
           <summary>Can I see a sample of past work?</summary>
-          <div class="answer">Yes. I share a current Client Primer in progress on the discovery call. The first build (a healthcare-architecture firm, name shared once they launch) is far enough along to show voice fidelity, the 8-phase structure, and the level of operational specificity I write to. Once the first three clients ship, public samples live here on this page.</div>
+          <div class="answer">Yes. The Sample section above this FAQ has a full Day 1 "The Myth" email from a composite senior-living architecture firm. It shows the voice fidelity, the 5-day arc structure, and the level of operational specificity I write to. The first three live client builds are in production now — additional public samples join this page as those engagements complete and clients agree to publish.</div>
         </details>
 
         <details class="faq-item">
