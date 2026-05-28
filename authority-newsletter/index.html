@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Authority Newsletter — Done-for-you monthly ghostwriting | Randy Kopplin</title>
+<meta name="description" content="Done-for-you monthly long-form newsletter ghostwriting for architect firms. Standard or Premium retainer, written in your voice. You stay on the boards. I write your authority content.">
+<meta property="og:title" content="The Authority Newsletter — Randy Kopplin">
+<meta property="og:description" content="A two-tier monthly ghostwriting retainer for architect firms. Authority content written in your voice. You stay on the boards.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theghostwritersdesk.com/authority-newsletter">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800;900&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #f79546;
+    --orange-dim: rgba(247,149,70,0.55);
+    --bg-0: #0a0a0a;
+    --bg-1: #111111;
+    --bg-2: #161616;
+    --bg-card: #1a1a1a;
+    --border: rgba(255,255,255,0.07);
+    --border-warm: rgba(247,149,70,0.25);
+    --white: #ffffff;
+    --text: rgba(255,255,255,0.82);
+    --muted: rgba(255,255,255,0.45);
+    --display: 'Barlow', sans-serif;
+    --body: 'DM Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(247,149,70,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(247,149,70,0.035) 1px, transparent 1px);
+    background-size: 52px 52px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    top: -300px; left: -300px;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(247,149,70,0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  a { color: var(--orange); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  p { margin-bottom: 1em; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--white); font-weight: 600; }
+  em { color: var(--white); font-style: italic; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 5vw;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: -0.01em;
+  }
+  .nav-brand { color: var(--white); }
+  .nav-brand span { color: var(--orange); }
+  .nav-divider { color: var(--muted); font-size: 14px; }
+  .nav-crumb {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .nav-crumb a { color: var(--muted); }
+  .nav-crumb.active { color: var(--orange); }
+  .nav-cta {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    border: 1px solid var(--orange);
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .nav-cta:hover { background: var(--orange); color: var(--bg-0); text-decoration: none; }
+
+  /* MAIN */
+  main { position: relative; z-index: 1; padding-top: 80px; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 5vw; }
+
+  /* HERO */
+  .hero { padding: 64px 0 80px; text-align: center; }
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    padding: 8px 16px;
+    border: 1.5px solid var(--orange-dim);
+    border-radius: 50px;
+  }
+  .hero .outcome-line {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(22px, 3vw, 32px);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--orange);
+    margin-top: 20px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(40px, 6vw, 76px);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+  .hero h1 .accent { color: var(--orange); }
+  .hero .subhead {
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 36px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .stat-row {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  .stat-row .stat { text-align: left; }
+  .stat-row .stat .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .stat-row .stat .value {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--white);
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--bg-0);
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    padding: 18px 36px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    margin: 0 4px;
+  }
+  .cta-btn:hover { opacity: 0.92; transform: translateY(-1px); text-decoration: none; }
+  .cta-btn-ghost {
+    display: inline-block;
+    background: transparent;
+    color: var(--text);
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    padding: 18px 36px;
+    border-radius: 50px;
+    border: 1.5px solid var(--border);
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+    margin: 0 4px;
+  }
+  .cta-btn-ghost:hover { border-color: var(--orange); color: var(--orange); text-decoration: none; }
+
+  /* SECTION */
+  .section { padding: 80px 0; border-top: 1px solid var(--border); }
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 14px;
+  }
+  .section h2 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(32px, 4.5vw, 48px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+  .section h3 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--white);
+    margin-top: 36px;
+    margin-bottom: 14px;
+  }
+  .section p { color: var(--text); }
+  .section ul { margin: 14px 0 14px 24px; color: var(--text); }
+  .section ul li { margin-bottom: 8px; }
+  .section .pull {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(22px, 2.6vw, 28px);
+    line-height: 1.3;
+    color: var(--white);
+    border-left: 3px solid var(--orange);
+    padding-left: 22px;
+    margin: 28px 0;
+  }
+
+  /* BREAKDOWN */
+  .breakdown {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 28px 0;
+  }
+  .breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+    color: var(--text);
+  }
+  .breakdown-row:last-of-type { border-bottom: none; }
+  .breakdown-row .value {
+    font-family: var(--mono);
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    white-space: nowrap;
+    margin-left: 18px;
+  }
+  .breakdown-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 16px;
+    margin-top: 8px;
+    border-top: 2px solid var(--orange);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 17px;
+    color: var(--white);
+  }
+  .breakdown-total .value {
+    font-family: var(--mono);
+    color: var(--orange);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+  }
+
+  /* DELIVERABLE — two-col */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 24px;
+  }
+  @media (max-width: 720px) { .two-col { grid-template-columns: 1fr; } }
+  .col-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  .col-card.included { border-color: var(--border-warm); }
+  .col-card h4 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 14px;
+  }
+  .col-card ul { margin: 0 0 0 18px; }
+  .col-card.excluded h4 { color: var(--muted); }
+
+  /* TIER GRID (Standard vs Premium pricing cards) */
+  .tier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  @media (max-width: 760px) { .tier-grid { grid-template-columns: 1fr; } }
+  .tier-card {
+    background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-1) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .tier-card.premium {
+    border: 2px solid var(--orange);
+    box-shadow: 0 0 0 6px rgba(247,149,70,0.06);
+  }
+  .tier-card .tier-label {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--orange);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .tier-card .tier-name {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 30px;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+  .tier-card .tier-price {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(40px, 5vw, 56px);
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 6px 0 4px;
+  }
+  .tier-card .tier-price-suffix {
+    font-family: var(--body);
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 22px;
+  }
+  .tier-card .tier-summary {
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .tier-card .tier-includes {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .tier-card ul {
+    list-style: none;
+    margin: 0 0 24px 0;
+    padding: 0;
+    color: var(--text);
+    flex: 1;
+  }
+  .tier-card ul li {
+    padding-left: 28px;
+    position: relative;
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .tier-card ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--orange);
+    font-family: var(--mono);
+    font-weight: 700;
+  }
+  .tier-card .slots-note {
+    display: inline-block;
+    background: rgba(247,149,70,0.1);
+    color: var(--orange);
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 50px;
+    margin-bottom: 22px;
+    align-self: flex-start;
+  }
+  .tier-card .tier-cta {
+    display: inline-block;
+    text-align: center;
+    background: var(--orange);
+    color: var(--bg-0);
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 16px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .tier-card .tier-cta:hover { opacity: 0.92; transform: translateY(-1px); text-decoration: none; }
+  .tier-card.standard .tier-cta { background: var(--bg-card); color: var(--orange); border: 1.5px solid var(--orange); }
+  .tier-card.standard .tier-cta:hover { background: var(--orange); color: var(--bg-0); }
+
+  /* PROCESS */
+  .process { display: flex; flex-direction: column; gap: 14px; margin-top: 24px; }
+  .process-step {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 28px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px 28px;
+  }
+  @media (max-width: 640px) {
+    .process-step { grid-template-columns: 1fr; gap: 12px; }
+  }
+  .process-step .step-num {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 36px;
+    color: var(--orange);
+    line-height: 1;
+  }
+  .process-step .step-time {
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .process-step h4 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 19px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .process-step p {
+    margin: 0;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* GUARANTEE */
+  .guarantee {
+    background: var(--bg-1);
+    border: 1px solid var(--border-warm);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin: 32px 0;
+  }
+  .guarantee h4 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 20px;
+    color: var(--orange);
+    margin-bottom: 12px;
+  }
+  .guarantee p { font-size: 16px; margin: 0; }
+
+  /* FAQ */
+  .faq { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+  details.faq-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+    transition: border-color 0.15s ease;
+  }
+  details.faq-item[open] { border-color: var(--border-warm); }
+  details.faq-item summary {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--white);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after {
+    content: '+';
+    color: var(--orange);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  details.faq-item[open] summary::after { content: '−'; }
+  details.faq-item .answer {
+    margin-top: 14px;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* CTA SECTION */
+  .cta-section { padding: 90px 0; text-align: center; }
+  .cta-section h2 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 20px;
+  }
+  .cta-section h2 .accent { color: var(--orange); }
+  .cta-section p {
+    max-width: 580px;
+    margin: 0 auto 32px;
+    font-size: 19px;
+    color: var(--text);
+  }
+
+  /* SAMPLE CARD */
+  .sample-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-warm);
+    border-radius: 4px;
+    padding: 36px;
+    margin-top: 32px;
+  }
+  @media (max-width: 640px) { .sample-card { padding: 24px; } }
+  .sample-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sample-subject, .sample-preview {
+    font-family: var(--body);
+    font-size: 16px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .sample-subject strong, .sample-preview strong {
+    color: var(--muted);
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-right: 8px;
+  }
+  .sample-divider { height: 1px; background: var(--border); margin: 24px 0; }
+  .sample-body {
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+  .sample-body p { margin-bottom: 16px; }
+  .sample-body h4 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 19px;
+    color: var(--white);
+    margin: 28px 0 14px;
+    letter-spacing: -0.005em;
+  }
+  .sample-body p.signoff {
+    color: var(--muted);
+    font-size: 14px;
+    margin-top: 24px;
+  }
+  .sample-body p.signoff strong { color: var(--text); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <a href="/" style="text-decoration:none; color:inherit;"><span class="nav-brand">Randy <span>Kopplin</span></span></a>
+    <span class="nav-divider">·</span>
+    <span class="nav-crumb"><a href="/">Ghostwriter's Desk</a></span>
+    <span class="nav-divider">·</span>
+    <span class="nav-crumb active">Service 03</span>
+  </div>
+  <a href="#apply" class="nav-cta">Apply Now</a>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">🖋 Service 03 · Two-tier monthly retainer</div>
+      <p class="outcome-line">Ship authority. Stay on the boards.</p>
+      <h1>The Authority<br><span class="accent">Newsletter.</span></h1>
+      <p class="subhead">A done-for-you monthly long-form newsletter ghostwriting service for architect firms. You stay on the boards. I write your authority content in your voice. Two tiers, sized to the practice. The done-for-you alternative to never finishing the writing you keep meaning to ship.</p>
+
+      <div class="stat-row">
+        <div class="stat"><div class="label">Standard</div><div class="value">$2,500–3,000/mo</div></div>
+        <div class="stat"><div class="label">Premium</div><div class="value">$4,000–5,000/mo</div></div>
+        <div class="stat"><div class="label">Capacity</div><div class="value">5 total slots</div></div>
+      </div>
+
+      <a href="#apply" class="cta-btn">Apply for a Slot →</a>
+      <a href="/book" class="cta-btn-ghost">Book a 15-min call</a>
+    </div>
+  </section>
+
+  <!-- REALITY CHECK -->
+  <section class="section">
+    <div class="container">
+      <div class="section-eyebrow">The reality check</div>
+      <h2>The honest math on writing your own authority content.</h2>
+
+      <p>You already know what an authority newsletter is. Long-form essays in your voice about the decisions only an architect with years on real projects can make. Each issue compounds the next. Six issues in, prospective clients have a sense of how you think before they ever call. Twelve issues in, they call already convinced.</p>
+
+      <p>You may have even sketched the topic stack on the back of a fee proposal.</p>
+
+      <p>Then you went back to running your firm.</p>
+
+      <h3>The hours</h3>
+
+      <p>A real Authority Newsletter — done well — takes about <strong>4 to 6 hours per issue.</strong> Not a number I made up. That's what the long-form essay shape requires when you write it the way it actually reads on the page.</p>
+
+      <div class="breakdown">
+        <div class="breakdown-row"><span class="label">Pick the topic and find the hook</span><span class="value">~30 min</span></div>
+        <div class="breakdown-row"><span class="label">Recall the specific war story or decision</span><span class="value">~30 min</span></div>
+        <div class="breakdown-row"><span class="label">Draft the five sections (Hook · Story · Pattern · Lesson · Offer)</span><span class="value">~2.5 hours</span></div>
+        <div class="breakdown-row"><span class="label">Edit pass: voice, dollar specificity, removing hedges</span><span class="value">~1 hour</span></div>
+        <div class="breakdown-row"><span class="label">Subject line, preview text, send-ready format</span><span class="value">~30 min</span></div>
+        <div class="breakdown-total"><span class="label">Per issue, best case</span><span class="value">5 hours</span></div>
+      </div>
+
+      <p>That's about 60 hours a year for a monthly cadence. 120 hours for weekly. Not crushing on paper. Crushing in practice — because the hours never show up as a block. They show up as a Sunday morning, then an emergency, then a six-week gap, then the cadence dies, then the next thing you ship looks like restart energy instead of consistent voice.</p>
+
+      <h3>The voice problem</h3>
+
+      <p>The hours aren't the real problem. <strong>Voice is.</strong></p>
+
+      <p>If your newsletter reads like agency marketing copy, your reader unsubscribes. The voice has to sound like <em>you</em>. The architect who has been through cert reviews and argued RFIs on Saturdays. The principal who saw three recessions and adjusted the practice each time. The sole practitioner who walks every site personally. Whatever you actually are.</p>
+
+      <p>Writing in your own voice is harder than writing well. Most architects, when they sit down to write something for marketing, default to a stiff professional register that sounds nothing like how they actually talk on a site visit. Fixing that takes drafts. And more drafts. And usually a ghostwriter who can hear when it's still off.</p>
+
+      <h3>The cost of "I'll get to it"</h3>
+
+      <p>I've watched dozens of firm owners read the framework, get excited, block off a weekend, draft one issue, and then... never ship the second.</p>
+
+      <p>This isn't a knock. It's what happens when you run a firm.</p>
+
+      <p class="pull">The cost of "I'll get to it" isn't the 60 hours. It's the year of compounding authority you didn't ship while the asset wasn't built.</p>
+
+      <p>The leads who would have read every issue stay cold. The referrals who would have been pre-sold by your writing stay maybe. The peer architects who DO ship build the relationships that close at higher fees. Your fees don't move. Their fees do.</p>
+    </div>
+  </section>
+
+  <!-- DELIVERABLE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-eyebrow">What I build for you</div>
+      <h2>Long-form authority content in your voice, every month.</h2>
+
+      <p>Not a template. Not a "fill in the blanks." A finished newsletter, written for your firm, in your voice, with your ICP's specific stewardship principles named and defended.</p>
+
+      <h3>The structure of each issue</h3>
+
+      <p>Every Authority Newsletter follows a five-section long-form structure proven across the Karl Westworth pilot and the Authority Lab framework:</p>
+
+      <ul>
+        <li><strong>Hook.</strong> A misconception your audience holds, set up with a specific dollar contrast at scale. 3–6 lines.</li>
+        <li><strong>Story.</strong> A named war story or decision story from a real project. Specific dollar math, specific architect-developer conversation. ~400 words.</li>
+        <li><strong>Pattern.</strong> The recurring industry pattern behind the single story. Three or more parallel examples in your niche, surfacing the depth that only a career produces. ~400 words.</li>
+        <li><strong>Lesson.</strong> The universal stewardship principle. Implications for the reader. The vulnerable-occupant frame for healthcare and senior-living clients, or its equivalent in other niches. ~200 words.</li>
+        <li><strong>Offer.</strong> A soft pitch toward your standing audit offer, your preliminary review, or your fee conversation. One reply CTA. ~100 words.</li>
+      </ul>
+
+      <p>About 1,000 to 1,500 words per issue. Substantive enough to feel like real publishing. Short enough to read in a single sitting on a Saturday morning over coffee.</p>
+
+      <h3>What makes this different from agency output</h3>
+
+      <p><strong>One — I'm an architect, not a copywriter.</strong> 52 years on real projects. I've sat through cert reviews, argued RFIs on Saturdays, watched contractors mis-spec hardware, signed and sealed under deadline pressure. When I write your Pattern section about how value engineering destroys envelope performance, I know what value engineering actually looks like because I've watched it happen.</p>
+
+      <p><strong>Two — I write in your voice, not mine.</strong> Before I write a word for you, we do a 60-minute discovery call. You talk. I record. I extract your specific cadence, the phrases you reach for, the war stories that animate your point of view. Then I build a custom voice profile that gets tuned correctly before any drafting starts.</p>
+
+      <p><strong>Three — I plan quarterly.</strong> Every quarter we have a 45-minute planning call. We build a topic stack balanced across the three Lifecycle Loop buckets: Inception (pre-construction risk), Process (job-site catches), Stewardship (long-arc decisions). The stack gives you cadence discipline. Your voice notes between calls give it texture.</p>
+    </div>
+  </section>
+
+  <!-- SAMPLE -->
+  <section class="section">
+    <div class="container">
+      <div class="section-eyebrow">A real sample</div>
+      <h2>What an issue actually reads like.</h2>
+
+      <p>Every Authority Newsletter is custom — built for the firm's voice and niche, not pulled from a template. The issue below is a composite, written for a fictional senior-living architecture firm I use as a development persona. The firm is not real. The voice, structure, and operational specificity are exactly what gets shipped to paying clients.</p>
+
+      <div class="sample-card">
+        <div class="sample-meta">Sample · Monthly issue · Composite senior-living architecture firm</div>
+        <div class="sample-subject"><strong>Subject:</strong> The $85,000 mistake that costs your operator $1.2 million</div>
+        <div class="sample-divider"></div>
+
+        <div class="sample-body">
+          <p>Most senior-living developers think value-engineering the envelope is a smart cut.</p>
+
+          <p>It isn't.</p>
+
+          <p>It's an $85,000 saving that turns into a $1.2 million operating loss across the asset's first twenty years. And it does that quietly, line by line, on a P&L the developer has already stopped looking at by the time the consequences arrive.</p>
+
+          <p>I want to walk you through one specific decision on one specific project, and then I want to show you why this exact pattern shows up on every senior-living build I've worked on for forty years.</p>
+
+          <h4>The decision at Cypress Glen</h4>
+
+          <p>Last month I was on site at our Cypress Glen project in Sarasota. Eighty-four units, assisted living and memory care, for Watermark Retirement Communities. I was walking the building envelope with our project architect, checking the mineral wool exterior insulation as it went up under the cladding on the memory care wing.</p>
+
+          <p>Mineral wool was not the cheapest option I could have specified. Polyiso foam board would have saved Watermark roughly $85,000 across this building's envelope. The first conversation I had with the developer's construction manager included exactly that math, presented in exactly that way, with exactly the expectation that I would fold.</p>
+
+          <p>I did not fold.</p>
+
+          <p>Here is the math I gave back to him.</p>
+
+          <p>Polyiso loses R-value over time as the foam off-gases. Industry data puts the long-term thermal drift at roughly twenty percent over twenty years. On a building this size, in this climate zone, with the heating and cooling profile a memory care facility requires, that drift translates to an extra forty to sixty thousand dollars a year in operating costs. Every year, for the life of the wall assembly. The operator pays that.</p>
+
+          <p>That is between $800,000 and $1.2 million in operating losses over twenty years, traded for $85,000 in upfront capital savings.</p>
+
+          <p>That is not a value engineering decision. That is a value destruction decision.</p>
+
+          <p>I also pointed out that the new state code includes fire-spread provisions that mineral wool meets and polyiso, in this assembly, does not. The polyiso path would have required additional fire-blocking detailing that adds back roughly half the savings before the building even opens.</p>
+
+          <p>Watermark chose the mineral wool. The project moved on. The General Contractor was not happy, but the General Contractor was not signing the twenty-year operating proforma.</p>
+
+          <p>The expensive thing is never the spec. The expensive thing is the twenty years of operating losses, and the day you have to recoat or replace the assembly.</p>
+
+          <h4>The pattern across senior living</h4>
+
+          <p>I have been doing this for fifty-two years. I have watched envelope decisions like this one play out on roughly three hundred projects across senior living, healthcare, restaurants, industrial, and Class-A office.</p>
+
+          <p>The pattern is identical every time, and senior-living developers are the most exposed.</p>
+
+          <p>It runs like this. The developer underwrites the deal to a construction cost. The construction cost has a hard budget. The construction budget gets squeezed during preconstruction, often by exactly the percentage the contractor needs to find through value engineering. The architect's specification document is treated as a menu of suggestions rather than a set of decisions. The cheapest substitution in any category that won't be visible at the ribbon cutting becomes the path of least resistance.</p>
+
+          <p>The three substitutions I see most often in senior-living envelopes, and what each one actually costs:</p>
+
+          <p>Polyiso for mineral wool, as discussed. Five to fifteen percent annual energy penalty, decade-over-decade drift, fire code exposure.</p>
+
+          <p>Single-glazed PTAC units with thin frames in place of properly insulated high-performance glazing. Window-perimeter condensation in humid climates, mold in wall cavities, replacement cycles every seven to ten years on units that should last twenty.</p>
+
+          <p>EIFS over continuous insulation in place of properly detailed rainscreen assemblies on three- and four-story senior-living buildings. EIFS becomes a fifteen-year deferred maintenance problem that no operator wants to inherit.</p>
+
+          <p>Each of those substitutions saves a developer $50,000 to $150,000 at construction. Each one costs the operator $400,000 to $2 million across twenty years of operation.</p>
+
+          <h4>What this means for you</h4>
+
+          <p>If you are underwriting senior-living deals to a construction cost rather than a total cost of ownership, you are mispricing your assets.</p>
+
+          <p>The buildings that hold their refinance valuations in this asset class are not the ones that came in fifteen percent under construction budget. They are the ones whose envelopes still perform at year fifteen. Whose operating margins did not get eaten by HVAC oversizing because the original envelope leaked thermal performance.</p>
+
+          <p>A drawing is a theory. The building is the reality. The gap between them is where unsupervised value engineering lives, and the gap is wider in senior living than in any other sector I have worked in because the operating consequences hit the most vulnerable occupants the hardest.</p>
+
+          <p>Memory care residents are not residential renters. They cannot move when the building underperforms. They get agitated when the HVAC short-cycles. They lose sleep when the night-shift call-bell volume spikes because rooms are too cold or too warm. Their families notice. The state notices. Your census notices.</p>
+
+          <p>You are not buying a building. You are buying twenty to thirty years of operating it.</p>
+
+          <p>This is why stewardship matters more than style.</p>
+
+          <h4>The offer</h4>
+
+          <p>If you are planning a senior-living or healthcare project and want to make sure decisions like the one at Cypress Glen get made on a twenty-year horizon instead of a construction-budget horizon, we should look at your preliminary site plan before you break ground.</p>
+
+          <p>Reply to this email and let's run an Operational Audit.</p>
+
+          <p class="signoff">Best,<br><strong>Karl Westworth, AIA</strong><br>Principal | Meridian Healthcare Architects<br><em>Designing for Operational Excellence</em></p>
+        </div>
+      </div>
+
+      <p style="margin-top:32px; font-size:15px; color:var(--muted);">Voice and content vary per engagement. What stays consistent across every issue: the five-section long-form structure, the dollar-specificity-equals-authority principle, the named vulnerable-occupant frame for healthcare and senior-living, and the 30-to-40 phrase voice profile that gets the cadence right before any drafting starts.</p>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="section-eyebrow">The process</div>
+      <h2>Seven steps. Quarterly cadence. Capped slots.</h2>
+
+      <p>Exactly what working together looks like, from application to a year of shipped issues.</p>
+
+      <div class="process">
+        <div class="process-step">
+          <div><div class="step-num">1</div><div class="step-time">10 min</div></div>
+          <div><h4>Apply</h4><p>A short email form tells me about your firm, your niche, your audience, what content you ship now if any, and which tier interests you. The application is free. If you're outside what I can deliver well, I'll tell you before we book the discovery call.</p></div>
+        </div>
+        <div class="process-step">
+          <div><div class="step-num">2</div><div class="step-time">60 min</div></div>
+          <div><h4>Discovery call</h4><p>Within 7 days of fit-check approval, we get on Zoom. You talk. I record. We cover your firm's history, your specific ICP, the stewardship principles you defend, two or three real war stories, and your voice. No payment yet. You see what working together feels like before you commit.</p></div>
+        </div>
+        <div class="process-step">
+          <div><div class="step-num">3</div><div class="step-time">5 min</div></div>
+          <div><h4>Pay</h4><p>Within 24 hours of the discovery call, I send a Stripe link for the first month at your chosen tier. Payment confirms your slot. Monthly retainer, month-to-month, cancel anytime with 30 days notice.</p></div>
+        </div>
+        <div class="process-step">
+          <div><div class="step-num">4</div><div class="step-time">3–5 days</div></div>
+          <div><h4>Voice profile</h4><p>I take the discovery recording, pull out 30 to 40 phrases that capture your voice, and build a custom voice profile. I draft one test paragraph in your voice and send it for a thumbs-up. If it misses, we adjust before any real drafting.</p></div>
+        </div>
+        <div class="process-step">
+          <div><div class="step-num">5</div><div class="step-time">45 min</div></div>
+          <div><h4>Quarterly planning call</h4><p>We build the next quarter's topic stack together. 6 topics for Standard tier, 12 for Premium. Balanced across Inception (pre-construction), Process (job-site), and Stewardship (long-arc) buckets. Adjustable to your goals: client mid-refinancing? Weight Stewardship heavier. Opening a new market? Weight Inception heavier.</p></div>
+        </div>
+        <div class="process-step">
+          <div><div class="step-num">6</div><div class="step-time">Monthly</div></div>
+          <div><h4>Issue delivery</h4><p>Each issue arrives in Google Doc, plain text, and HTML format. You comment, request edits, approve. I revise. Final delivery is publish-ready for Substack, ConvertKit, Beehiiv, MailerLite, or your platform of choice. You publish under your name.</p></div>
+        </div>
+        <div class="process-step">
+          <div><div class="step-num">7</div><div class="step-time">Quarterly</div></div>
+          <div><h4>Quarterly review + replan</h4><p>End of each quarter we look at what shipped, what got the most replies, what should weight differently next quarter. Then we plan the next 6 or 12 topics. The system is the cadence. The cadence is the brand.</p></div>
+        </div>
+      </div>
+
+      <p style="margin-top:24px;"><strong>First issue ships within 30 days of payment.</strong> Subsequent issues land on the cadence your tier specifies — twice a month for Standard, weekly for Premium.</p>
+    </div>
+  </section>
+
+  <!-- PRICING / OFFER -->
+  <section class="section" id="apply">
+    <div class="container">
+      <div class="section-eyebrow">The offer</div>
+      <h2>Two tiers. Monthly retainer. Capped slots.</h2>
+
+      <p>Pick the tier that matches your content ambition. Both deliver finished, ready-to-publish authority content in your voice, on schedule, every month. Cancel anytime with 30 days notice.</p>
+
+      <div class="tier-grid">
+
+        <!-- STANDARD -->
+        <div class="tier-card standard">
+          <div class="tier-label">Standard</div>
+          <div class="tier-name">Newsletter Retainer</div>
+          <div class="tier-price">$2,500–3,000</div>
+          <div class="tier-price-suffix">per month</div>
+          <div class="tier-summary">For principals who want a consistent newsletter cadence and a working email funnel. Two issues a month plus an educational email course that filters leads.</div>
+          <div class="tier-includes">Includes</div>
+          <ul>
+            <li>Two newsletters per month, long-form, in your voice</li>
+            <li>Quarterly planning call (45 min)</li>
+            <li>Periodic refresh of your educational email course</li>
+            <li>Three delivery formats per issue (Doc, plain text, HTML)</li>
+            <li>Optional LinkedIn add-on: 1–2 posts per week at $500/month, or bundled</li>
+          </ul>
+          <span class="slots-note">3–4 slots / capacity</span>
+          <a href="mailto:randy@randykopplin.com?subject=Authority%20Newsletter%20%E2%80%94%20Standard%20Tier%20Application&body=Hi%20Randy%2C%0A%0AI%27d%20like%20to%20apply%20for%20the%20Standard%20Newsletter%20Retainer.%0A%0A--%20Firm%20name%20and%20URL%3A%0A--%20My%20role%3A%0A--%20Niche%20%2F%20project%20type%3A%0A--%20Who%20your%20audience%20is%20(developer%20type%2C%20decision-maker%20role)%3A%0A--%20Current%20content%20cadence%20(newsletter%2C%20LinkedIn%2C%20nothing)%3A%0A--%20Email%20list%20size%20if%20any%3A%0A--%20Why%20you%20want%20this%20now%3A%0A--%20Best%20email%20and%20phone%3A%0A%0AThanks." class="tier-cta">Apply for Standard →</a>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="tier-card premium">
+          <div class="tier-label">Premium</div>
+          <div class="tier-name">Authority Retainer</div>
+          <div class="tier-price">$4,000–5,000</div>
+          <div class="tier-price-suffix">per month</div>
+          <div class="tier-summary">For principals who want a complete content presence and strategic counsel attached. Weekly newsletter, email course, LinkedIn voice, and quarterly strategy.</div>
+          <div class="tier-includes">Includes everything in Standard, plus</div>
+          <ul>
+            <li>Weekly newsletter (4 per month, long-form, in your voice)</li>
+            <li>Educational email course setup and ongoing updates</li>
+            <li>LinkedIn thought pieces written from the principal's point of view</li>
+            <li>Quarterly strategy session on client education and fee conversations</li>
+            <li>Priority response window on raw material (voice notes turned around within 48 hours)</li>
+          </ul>
+          <span class="slots-note">1–2 slots / capacity</span>
+          <a href="mailto:randy@randykopplin.com?subject=Authority%20Newsletter%20%E2%80%94%20Premium%20Tier%20Application&body=Hi%20Randy%2C%0A%0AI%27d%20like%20to%20apply%20for%20the%20Premium%20Authority%20Retainer.%0A%0A--%20Firm%20name%20and%20URL%3A%0A--%20My%20role%3A%0A--%20Niche%20%2F%20project%20type%3A%0A--%20Who%20your%20audience%20is%20(developer%20type%2C%20decision-maker%20role)%3A%0A--%20Current%20content%20cadence%20(newsletter%2C%20LinkedIn%2C%20nothing)%3A%0A--%20Email%20list%20size%20if%20any%3A%0A--%20Why%20you%20want%20this%20now%3A%0A--%20Strategic%20goal%20for%20the%20next%2012%20months%3A%0A--%20Best%20email%20and%20phone%3A%0A%0AThanks." class="tier-cta">Apply for Premium →</a>
+        </div>
+
+      </div>
+
+      <div class="guarantee">
+        <h4>The first-month guarantee</h4>
+        <p>If the voice profile test paragraph in Step 4 doesn't sound like you and we can't tune it within reasonable iteration, <strong>I refund the first month minus the discovery call.</strong> I'd rather refund than ship issues in a voice that isn't yours. From the first delivered issue forward, the retainer is month-to-month with 30-day cancellation.</p>
+      </div>
+
+      <p style="text-align:center; margin-top:24px;"><strong>Total capacity is 5 client slots.</strong> When the slots are full, you go in the next-opening queue. Not theatrical scarcity — real production capacity for a single ghostwriter writing in your voice.</p>
+
+      <p style="text-align:center; margin-top:28px; font-size:15px; color:var(--muted);">Not sure which tier fits? <a href="/book">Book a free 15-minute call →</a></p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section">
+    <div class="container">
+      <div class="section-eyebrow">FAQ</div>
+      <h2>Questions before you apply.</h2>
+
+      <div class="faq">
+        <details class="faq-item">
+          <summary>What if I don't have time to record voice notes between planning calls?</summary>
+          <div class="answer">The quarterly planning call is the floor. We build a 6-topic (Standard) or 12-topic (Premium) stack at the start of each quarter that's substantive enough to write from without weekly input. Voice notes between calls are a bonus that adds texture and recency — not a requirement. Some clients send a voice memo a week. Some send one a month. Some send none and we write from the stack. All three patterns work.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I see more samples of past work?</summary>
+          <div class="answer">The composite sample above shows the long-form structure, voice tuning, and operational specificity I write to. Voice and content vary per engagement, but the structural shape stays consistent. Once we have your discovery call recorded, I draft a one-paragraph test in your specific voice before any real issue gets written — that's the moment you see whether the engine fits your firm. The first-month guarantee covers that gate.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What email platform does this work with?</summary>
+          <div class="answer">All of them. Substack, ConvertKit, Beehiiv, Mailchimp, MailerLite, ActiveCampaign, Klaviyo, even self-hosted Listmonk. You receive each issue in three formats — Google Doc, plain text, HTML — so you paste into whatever you're running. I don't manage the sending platform itself; you publish under your name.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What happens if I want to cancel?</summary>
+          <div class="answer">Month-to-month with 30 days notice after the first issue ships. Send an email, finish the in-flight issue, your slot opens. No long-term commitment, no cancellation fees. The first month is the only one that carries the voice-profile guarantee since that's the load-bearing setup work.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can I upgrade or downgrade between tiers?</summary>
+          <div class="answer">Yes. Most clients start on Standard for the first quarter to validate the production rhythm, then move to Premium once they want the higher cadence and LinkedIn coverage. Upgrades take effect the next billing cycle. Downgrades the same. No re-onboarding required.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>My niche is very specific (lab planning, NICU design, retirement-community master-planning). Is this still a fit?</summary>
+          <div class="answer">Probably. The framework is niche-agnostic — Hook, Story, Pattern, Lesson, Offer works for any architect-to-developer relationship where stewardship principles can be defended in writing. The discovery call is where we surface whether your specific niche has the war stories and pattern recognition the long-form shape needs. If it doesn't, I'll tell you before you pay.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Who owns the content?</summary>
+          <div class="answer">You own everything. Voice profile, finished issues, all formats, the topic stack. I retain a working copy of the voice profile for my own reference during the engagement, but you own the deliverable outright. No licensing, no resale rights for me, no commercial restrictions on your use during or after the retainer.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What if I want a Client Primer Build too?</summary>
+          <div class="answer"><a href="/client-primer-build">The Client Primer Build</a> is Service 01 — a separate one-time engagement that builds your educational email course. Most architects who buy a Newsletter retainer have already shipped a Client Primer first; the email course is what gets refreshed periodically as part of both tiers of this service. Buy either independently, or both in sequence.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ship authority. <span class="accent">Stay on the boards.</span></h2>
+      <p>10 minutes to apply. 48-hour response. If we're a fit, we book the discovery call within 7 days and you don't pay until after the call.</p>
+      <a href="mailto:randy@randykopplin.com?subject=Authority%20Newsletter%20%E2%80%94%20Application&body=Hi%20Randy%2C%0A%0AI%27d%20like%20to%20apply%20for%20the%20Authority%20Newsletter%20retainer.%0A%0A--%20Firm%20name%20and%20URL%3A%0A--%20My%20role%3A%0A--%20Niche%20%2F%20project%20type%3A%0A--%20Who%20your%20audience%20is%20(developer%20type%2C%20decision-maker%20role)%3A%0A--%20Current%20content%20cadence%20(newsletter%2C%20LinkedIn%2C%20nothing)%3A%0A--%20Email%20list%20size%20if%20any%3A%0A--%20Which%20tier%20interests%20you%20(Standard%20%2F%20Premium%20%2F%20Not%20sure)%3A%0A--%20Why%20you%20want%20this%20now%3A%0A--%20Best%20email%20and%20phone%3A%0A%0AThanks." class="cta-btn">Apply Now →</a>
+      <p style="margin-top:24px; font-size:15px; color:var(--muted);">Not ready to apply? <a href="/book">Book a free 15-minute call →</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer style="border-top:1px solid var(--border); padding:32px 5vw; text-align:center; color:var(--muted); font-size:14px;">
+  &copy; Randy Kopplin · <a href="/">The Ghostwriter's Desk</a>
+</footer>
+
+</body>
+</html>
