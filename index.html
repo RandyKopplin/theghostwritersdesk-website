@@ -444,6 +444,43 @@
     transition: opacity 0.15s ease, transform 0.15s ease;
   }
   .cta-btn-primary:hover { opacity: 0.9; transform: translateY(-1px); text-decoration: none; }
+  .cta-btn-ghost {
+    display: inline-block;
+    background: transparent;
+    color: var(--orange);
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    padding: 16px 32px;
+    border: 1.5px solid var(--orange);
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .cta-btn-ghost:hover { background: var(--orange); color: var(--bg-0); text-decoration: none; }
+
+  /* SOFT CTA inset */
+  .soft-cta {
+    margin-top: 48px;
+    padding-top: 36px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .soft-cta h3 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+  .soft-cta p {
+    font-size: 16px;
+    color: var(--text);
+    max-width: 540px;
+    margin: 0 auto 24px;
+  }
 
   /* FOOTER */
   footer {
@@ -561,6 +598,13 @@
           <span class="service-cta soon">Coming soon</span>
         </div>
 
+      </div>
+
+      <!-- Soft CTA — free 15-minute call -->
+      <div class="soft-cta">
+        <h3>Not sure which service fits?</h3>
+        <p>Book a free 15-minute call. I name the one myth your ideal clients believe and tell you straight whether a Client Primer fits your firm. No pitch, no pressure.</p>
+        <a href="/book" class="cta-btn-ghost">Book the 15-Minute Call →</a>
       </div>
     </div>
   </section>
