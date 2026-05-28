@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Book the free 15-minute call — The Ghostwriter's Desk | Randy Kopplin</title>
+<meta name="description" content="A 15-minute call. I name the one myth your ideal clients believe about your project type, and tell you straight whether a Client Primer fits your firm. No pitch, no pressure. Pick a time inside 48 hours.">
+<meta property="og:title" content="Book the free 15-minute call — The Ghostwriter's Desk">
+<meta property="og:description" content="15 minutes. I name the one myth your ideal clients believe. Then I tell you if a Primer fits.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theghostwritersdesk.com/book">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800;900&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #f79546;
+    --orange-dim: rgba(247,149,70,0.55);
+    --bg-0: #0a0a0a;
+    --bg-1: #111111;
+    --bg-2: #161616;
+    --bg-card: #1a1a1a;
+    --border: rgba(255,255,255,0.07);
+    --border-warm: rgba(247,149,70,0.25);
+    --white: #ffffff;
+    --text: rgba(255,255,255,0.82);
+    --muted: rgba(255,255,255,0.45);
+    --display: 'Barlow', sans-serif;
+    --body: 'DM Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(247,149,70,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(247,149,70,0.035) 1px, transparent 1px);
+    background-size: 52px 52px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    top: -300px; left: -300px;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(247,149,70,0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  a { color: var(--orange); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  p { margin-bottom: 1em; }
+  p:last-child { margin-bottom: 0; }
+  strong { color: var(--white); font-weight: 600; }
+  em { color: var(--white); font-style: italic; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 5vw;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 0.75rem; font-family: var(--display); font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em; }
+  .nav-brand { color: var(--white); }
+  .nav-brand span { color: var(--orange); }
+  .nav-divider { color: var(--muted); }
+  .nav-crumb { color: var(--text); font-weight: 500; font-family: var(--body); font-size: 0.85rem; letter-spacing: 0.01em; }
+  .nav-crumb a { color: var(--text); }
+  .nav-crumb.active { color: var(--orange); }
+  .nav-cta {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--bg-0);
+    background: var(--orange);
+    padding: 0.7rem 1.2rem;
+    border-radius: 2px;
+  }
+  .nav-cta:hover { background: var(--white); text-decoration: none; }
+
+  /* MAIN */
+  main { padding-top: 4.5rem; position: relative; z-index: 1; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 5vw; }
+
+  /* HERO */
+  .hero { padding: 5rem 0 3.5rem; }
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--border-warm);
+    border-radius: 2px;
+    margin-bottom: 1.6rem;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: clamp(2.1rem, 5vw, 3.4rem);
+    line-height: 1.1;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.3rem;
+  }
+  h1 .accent { color: var(--orange); }
+  .subhead {
+    font-size: 1.13rem;
+    line-height: 1.6;
+    color: var(--text);
+    margin-bottom: 0;
+    max-width: 620px;
+  }
+
+  /* SECTION */
+  .section { padding: 2.6rem 0; border-top: 1px solid var(--border); }
+  .section h2 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 1.2rem;
+  }
+  .section ul { list-style: none; }
+  .section ul li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.7rem;
+  }
+  .section ul li:last-child { margin-bottom: 0; }
+  .section ul li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--orange);
+    font-weight: 700;
+  }
+  .section ol {
+    list-style: none;
+    counter-reset: step;
+  }
+  .section ol li {
+    position: relative;
+    padding-left: 2.2rem;
+    margin-bottom: 0.7rem;
+    counter-increment: step;
+  }
+  .section ol li:last-child { margin-bottom: 0; }
+  .section ol li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.6rem;
+    text-align: center;
+    color: var(--orange);
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 0.85rem;
+  }
+
+  /* CREDENTIAL CALLOUT */
+  .credential {
+    background: var(--bg-card);
+    border-left: 3px solid var(--orange);
+    padding: 1.4rem 1.6rem;
+    border-radius: 2px;
+    margin-top: 0.6rem;
+  }
+  .credential strong { display: block; margin-bottom: 0.4rem; font-family: var(--display); font-size: 1.05rem; }
+
+  /* REQUIRED QUESTION CALLOUT */
+  .required {
+    background: rgba(247,149,70,0.08);
+    border: 1px solid var(--border-warm);
+    padding: 1.4rem 1.6rem;
+    border-radius: 2px;
+    margin-top: 0.6rem;
+  }
+  .required .label {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.5rem;
+  }
+  .required .question {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--white);
+    line-height: 1.4;
+  }
+
+  /* CTA */
+  .cta-section { padding: 3.2rem 0 4rem; border-top: 1px solid var(--border); text-align: center; }
+  .cta-section .note {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 1rem;
+  }
+  .cta-section .urgency {
+    font-family: var(--display);
+    font-size: 1.25rem;
+    color: var(--white);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  .cta-btn {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--bg-0);
+    background: var(--orange);
+    padding: 1.1rem 2.2rem;
+    border-radius: 2px;
+  }
+  .cta-btn:hover { background: var(--white); text-decoration: none; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 5vw;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+    position: relative;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <a href="/" style="text-decoration:none; color:inherit;"><span class="nav-brand">Randy <span>Kopplin</span></span></a>
+    <span class="nav-divider">·</span>
+    <span class="nav-crumb"><a href="/">Ghostwriter's Desk</a></span>
+    <span class="nav-divider">·</span>
+    <span class="nav-crumb active">Book a Call</span>
+  </div>
+  <a href="#book" class="nav-cta">Book Now</a>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">🖋 Free · 15 Minutes · No Pitch</div>
+      <h1>15 minutes. I name the one myth your ideal clients believe. <span class="accent">Then I tell you if a Primer fits.</span></h1>
+      <p class="subhead">This is not a sales call. You give me 15 minutes about your firm. I give you the single myth your ideal clients believe about your project type, and a straight answer on whether a 5-day email course would win you better work. If a Primer is wrong for your firm, I say so and point you elsewhere.</p>
+    </div>
+  </section>
+
+  <!-- WALK AWAY WITH -->
+  <section class="section">
+    <div class="container">
+      <h2>What you walk away with</h2>
+      <ul>
+        <li>The one myth your ideal clients believe, named for your project type.</li>
+        <li>A straight yes or no on whether a Client Primer fits your firm.</li>
+        <li>One next move you keep, paid or not.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHAT THIS IS NOT -->
+  <section class="section">
+    <div class="container">
+      <h2>What this call is not</h2>
+      <ul>
+        <li>A pitch.</li>
+        <li>A pressure close.</li>
+        <li>A waste of your time. No fit, no hard feelings, and I tell you on the call.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHO -->
+  <section class="section">
+    <div class="container">
+      <h2>Who I work with</h2>
+      <ul>
+        <li>Licensed architects, firm principals, sole practitioners.</li>
+        <li>Not students, interns, or non-AEC consultants.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- WHY LISTEN -->
+  <section class="section">
+    <div class="container">
+      <h2>Why listen to me</h2>
+      <div class="credential">
+        <strong>52 years as a practicing architect.</strong>
+        HKS, Haskell, Marshall Erdman, my own practice. Roughly $300M in built work. I write your marketing as an architect, not as an agency guessing from the outside.
+      </div>
+    </div>
+  </section>
+
+  <!-- IF WE FIT -->
+  <section class="section">
+    <div class="container">
+      <h2>If we fit, here is what follows</h2>
+      <ol>
+        <li>I send the application and the flat $1,995 price.</li>
+        <li>You apply, you pay, we book the 60-minute discovery call.</li>
+        <li>I deliver your 5-day Primer in your voice, 21 days for most builds.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- REQUIRED QUESTION -->
+  <section class="section">
+    <div class="container">
+      <h2>Before you book</h2>
+      <p>One required question. You'll answer it in the booking form so I can show up to the call ready.</p>
+      <div class="required">
+        <div class="label">Required</div>
+        <div class="question">What kind of work do you do, and who is the client you want more of?</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="book">
+    <div class="container">
+      <div class="note">Booking note</div>
+      <p class="urgency">Pick a time inside 48 hours. Cold momentum fades fast.</p>
+      <a href="https://cal.com/randy-kopplin/15min" target="_blank" rel="noopener" class="cta-btn">Book the 15-Minute Call →</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Randy Kopplin. <a href="/">The Ghostwriter's Desk</a> · <a href="https://randykopplin.com">randykopplin.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
