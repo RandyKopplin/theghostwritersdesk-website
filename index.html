@@ -279,6 +279,15 @@
     border-color: var(--orange);
     transform: translateY(-2px);
   }
+  .service-card.shipped {
+    border-color: var(--border);
+    opacity: 0.85;
+  }
+  .service-card.shipped:hover {
+    border-color: var(--border-warm);
+    opacity: 1;
+    transform: translateY(-1px);
+  }
   @media (max-width: 720px) {
     .service-card {
       grid-template-columns: 1fr;
@@ -341,6 +350,32 @@
     cursor: default;
   }
   .service-cta.soon:hover { text-decoration: none; }
+  .service-cta.shipped {
+    background: transparent;
+    color: var(--orange);
+    border: 1.5px solid var(--orange-dim);
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .service-cta.shipped:hover {
+    background: var(--orange);
+    color: var(--bg-0);
+    border-color: var(--orange);
+    text-decoration: none;
+  }
+  .meta-tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border: 1px solid var(--border);
+    border-radius: 50px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
 
   /* WHY-THIS-WORKS */
   .why-block {
@@ -576,15 +611,15 @@
           <span class="service-cta active">Read more →</span>
         </a>
 
-        <!-- SERVICE 02 — ACTIVE -->
-        <a href="/roadmap-book" class="service-card active" style="text-decoration:none; color:inherit;">
+        <!-- SERVICE 02 — SHIPPED -->
+        <a href="/roadmap-book" class="service-card shipped" style="text-decoration:none; color:inherit;">
           <div class="service-num">02</div>
           <div class="service-info">
             <h3>The Roadmap Book Build</h3>
-            <div class="meta">36-Page Feasibility Roadmap <span class="divider">·</span> 14-Day Delivery <span class="divider">·</span> 2 slots/month</div>
+            <div class="meta">36-Page Feasibility Roadmap <span class="divider">·</span> 14-Day Delivery <span class="meta-tag">Shipped</span></div>
             <p>A custom 36-page Project Feasibility Roadmap template branded for your firm, plus the intake form, fee schedule, sales script, and delivery checklist. The deliverable that lets you charge $1,500+ for a paid audit instead of writing free proposals.</p>
           </div>
-          <span class="service-cta active">Read more →</span>
+          <span class="service-cta shipped">See the build →</span>
         </a>
 
         <!-- SERVICE 03 — ACTIVE -->
