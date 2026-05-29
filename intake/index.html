@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Discovery Intake — The Ghostwriter's Desk | Randy Kopplin</title>
+<meta name="description" content="Discovery Intake for fit-approved applicants. About 20 minutes. Preparation for the 30-minute discovery call.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800;900&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #f79546;
+    --orange-dim: rgba(247,149,70,0.55);
+    --bg-0: #0a0a0a;
+    --bg-1: #111111;
+    --bg-2: #161616;
+    --bg-card: #1a1a1a;
+    --border: rgba(255,255,255,0.07);
+    --border-warm: rgba(247,149,70,0.25);
+    --white: #ffffff;
+    --text: rgba(255,255,255,0.82);
+    --muted: rgba(255,255,255,0.45);
+    --display: 'Barlow', sans-serif;
+    --body: 'DM Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(247,149,70,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(247,149,70,0.035) 1px, transparent 1px);
+    background-size: 52px 52px;
+    pointer-events: none; z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed; top: -300px; left: -300px;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(247,149,70,0.08) 0%, transparent 65%);
+    pointer-events: none; z-index: 0;
+  }
+  a { color: var(--orange); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: var(--white); font-weight: 600; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5vw;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--display); font-weight: 800;
+    font-size: 16px; letter-spacing: -0.01em;
+  }
+  .nav-brand { color: var(--white); }
+  .nav-brand span { color: var(--orange); }
+  .nav-divider { color: var(--muted); font-size: 14px; }
+  .nav-crumb {
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  }
+  .nav-crumb a { color: var(--muted); }
+  .nav-crumb.active { color: var(--orange); }
+
+  /* MAIN */
+  main { position: relative; z-index: 1; padding-top: 80px; padding-bottom: 60px; }
+  .container { max-width: 760px; margin: 0 auto; padding: 0 5vw; }
+
+  /* HERO */
+  .hero { padding: 64px 0 40px; text-align: center; }
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--mono); font-weight: 500; font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange);
+    padding: 8px 16px; border: 1.5px solid var(--orange-dim); border-radius: 50px;
+  }
+  .hero .outcome-line {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(22px, 3vw, 32px); line-height: 1.2;
+    letter-spacing: -0.01em; color: var(--orange);
+    margin-top: 20px; margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(36px, 5vw, 60px); line-height: 1.05;
+    letter-spacing: -0.025em; color: var(--white);
+    margin-bottom: 22px;
+  }
+  .hero h1 .accent { color: var(--orange); }
+  .hero .subhead {
+    font-family: var(--body); font-weight: 400;
+    font-size: clamp(17px, 1.9vw, 20px); line-height: 1.55;
+    color: var(--text); max-width: 620px;
+    margin: 0 auto;
+  }
+
+  /* GATE NOTICE */
+  .gate-notice {
+    background: rgba(247,149,70,0.06);
+    border: 1px solid var(--border-warm);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 32px;
+    font-size: 14px; line-height: 1.6; color: var(--text);
+  }
+  .gate-notice strong { color: var(--orange); }
+
+  /* FORM CARD */
+  .form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 44px;
+    margin-top: 36px;
+  }
+  @media (max-width: 600px) { .form-card { padding: 28px 22px; } }
+
+  .field { margin-bottom: 40px; }
+  .field:last-of-type { margin-bottom: 28px; }
+  .field-label {
+    display: block;
+    font-family: var(--display); font-weight: 800;
+    font-size: 19px; color: var(--white);
+    margin-bottom: 8px; line-height: 1.3;
+  }
+  .field-label .num {
+    color: var(--orange); font-family: var(--mono);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-right: 10px; vertical-align: middle;
+  }
+  .field-hint {
+    font-size: 14px; color: var(--muted);
+    margin-bottom: 14px; line-height: 1.55;
+  }
+
+  input[type="email"],
+  textarea {
+    width: 100%;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-family: var(--body); font-size: 16px;
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+  input::placeholder, textarea::placeholder { color: var(--muted); }
+  input:focus, textarea:focus { border-color: var(--orange-dim); }
+  textarea { min-height: 140px; resize: vertical; line-height: 1.55; }
+  textarea.large { min-height: 220px; }
+
+  .honeypot {
+    position: absolute; left: -9999px; top: -9999px;
+    width: 1px; height: 1px; opacity: 0;
+  }
+
+  .submit-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--bg-0);
+    font-family: var(--body); font-weight: 700;
+    font-size: 16px; letter-spacing: 0.02em;
+    padding: 18px 36px; border: 0; border-radius: 50px;
+    cursor: pointer;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .cta-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+  .cta-btn:disabled { opacity: 0.5; cursor: wait; transform: none; }
+  .submit-note {
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  }
+
+  .alert {
+    display: none;
+    background: rgba(255, 76, 76, 0.08);
+    border: 1px solid rgba(255, 76, 76, 0.35);
+    color: #ffc8c8;
+    padding: 14px 18px; border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+  .alert.show { display: block; }
+
+  .success {
+    display: none;
+    background: rgba(247,149,70,0.08);
+    border: 1px solid var(--border-warm);
+    border-radius: 16px;
+    padding: 44px;
+    margin-top: 48px;
+    text-align: center;
+  }
+  .success.show { display: block; }
+  .success h2 {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--white); line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .success h2 .accent { color: var(--orange); }
+  .success p { font-size: 17px; line-height: 1.6; margin-bottom: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .success p:last-child { margin-bottom: 0; }
+  .success a { color: var(--orange); border-bottom: 1px solid var(--orange-dim); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 5vw;
+    text-align: center;
+    color: var(--muted); font-size: 13px;
+    position: relative; z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <a href="/" style="text-decoration:none; color:inherit;"><span class="nav-brand">Randy <span>Kopplin</span></span></a>
+    <span class="nav-divider">·</span>
+    <span class="nav-crumb"><a href="/">Ghostwriter's Desk</a></span>
+    <span class="nav-divider">·</span>
+    <span class="nav-crumb active">Discovery Intake</span>
+  </div>
+</nav>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">🖋 Discovery Intake</div>
+      <p class="outcome-line">About 20 minutes. Substantive.</p>
+      <h1>Prep for the <span class="accent">30-minute call.</span></h1>
+      <p class="subhead">Eight questions. The more substantive your answers, the more useful the discovery call. I'll have your intake in front of me when we talk, so we can spend the time on the work only a live call can do.</p>
+
+      <div class="gate-notice">
+        <strong>If you've been invited to complete this intake, you're in the right place.</strong> If you haven't applied yet, start at <a href="/apply" style="color:var(--orange); border-bottom: 1px solid var(--orange-dim);">/apply</a>.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="alert" id="form-error" role="alert"></div>
+
+      <form class="form-card" id="intake-form" novalidate>
+
+        <!-- Q1: Email -->
+        <div class="field">
+          <label class="field-label" for="email"><span class="num">01</span>What email did you apply with?</label>
+          <p class="field-hint">Matches this intake to your application record. Use the same address you used on /apply.</p>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+
+        <!-- Q2: Firm context -->
+        <div class="field">
+          <label class="field-label" for="firm_context"><span class="num">02</span>Firm context.</label>
+          <p class="field-hint">Years in practice, team size, states or regions where you work, and three recent projects (one line each: project type, client type, scope).</p>
+          <textarea id="firm_context" name="firm_context" required placeholder="22 years. Team of 8. Licensed in TX, OK, NM. Recent: 60-bed memory care for Watermark in Sarasota / mid-rise office shell in Fort Worth / restaurant tenant fit-out for a regional chain in Austin."></textarea>
+        </div>
+
+        <!-- Q3: Voice samples -->
+        <div class="field">
+          <label class="field-label" for="voice_samples"><span class="num">03</span>Voice samples.</label>
+          <p class="field-hint">Paste 2 to 3 paragraphs each from recent emails to clients, RFI responses, proposals, or LinkedIn posts. The more, the better. This is the raw material for your voice profile.</p>
+          <textarea id="voice_samples" name="voice_samples" required class="large" placeholder="Paste paragraph 1 here...&#10;&#10;Paste paragraph 2 here...&#10;&#10;Paste paragraph 3 here..."></textarea>
+        </div>
+
+        <!-- Q4: Ideal client -->
+        <div class="field">
+          <label class="field-label" for="ideal_client"><span class="num">04</span>Your ideal client, in their language.</label>
+          <p class="field-hint">Job title, company type, and the specific scenario they're in when they need you. Be granular.</p>
+          <textarea id="ideal_client" name="ideal_client" required placeholder="Senior-living developer, principal-level, who has just closed a new deal and is two months from preconstruction. They are underwriting to twenty-year operating margins and they have started to suspect their construction-cost-first approach is mispricing the asset."></textarea>
+        </div>
+
+        <!-- Q5: Myth -->
+        <div class="field">
+          <label class="field-label" for="myth"><span class="num">05</span>The myth your ICP believes that's wrong.</label>
+          <p class="field-hint">The specific lie you want to dismantle in Day 1 of the Primer. The thing they believe that costs them money.</p>
+          <textarea id="myth" name="myth" required placeholder="They think code-compliant means protected. It doesn't. Code is the floor. Operational performance is the ceiling. The gap between them is where their operating margin gets eaten for thirty years."></textarea>
+        </div>
+
+        <!-- Q6: War story -->
+        <div class="field">
+          <label class="field-label" for="war_story"><span class="num">06</span>A war story.</label>
+          <p class="field-hint">A specific moment where you saved a client from a bad outcome. The kind of story that animates your point of view. 2 to 3 paragraphs.</p>
+          <textarea id="war_story" name="war_story" required class="large" placeholder="At Cypress Glen in Sarasota, the developer wanted to value-engineer the envelope from mineral wool to polyiso. The CM brought me the math: $85,000 saved..."></textarea>
+        </div>
+
+        <!-- Q7: Unique process -->
+        <div class="field">
+          <label class="field-label" for="unique_process"><span class="num">07</span>Your unique process.</label>
+          <p class="field-hint">What you do that other firms don't, or do better. If you had to brand it as a named protocol, what would you call it?</p>
+          <textarea id="unique_process" name="unique_process" required placeholder="I underwrite every spec decision against the operator's twenty-year proforma, not against the construction budget. I call it the Stewardship Audit. It catches between $400,000 and $2 million in operating losses on a typical senior-living project before the developer ever breaks ground."></textarea>
+        </div>
+
+        <!-- Q8: Stewardship + paid offer -->
+        <div class="field">
+          <label class="field-label" for="stewardship_offer"><span class="num">08</span>Your stewardship principle + existing paid offer.</label>
+          <p class="field-hint">The one principle you defend that other architects don't (the recurring "why this matters" line). And the paid audit, consultation, or feasibility study you currently offer or want to add — scope and price.</p>
+          <textarea id="stewardship_offer" name="stewardship_offer" required class="large" placeholder="Principle: Stewardship matters more than style.&#10;&#10;Paid offer: I currently offer an Operational Audit at $2,500. It's a preliminary review of the site plan before the developer breaks ground. About four hours of my time, delivered as a written report. I want to keep the price and tighten the deliverable."></textarea>
+        </div>
+
+        <!-- Honeypot -->
+        <input type="text" name="website_url" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="submit-row">
+          <button type="submit" class="cta-btn" id="submit-btn">Submit intake →</button>
+          <span class="submit-note">Ready for the call</span>
+        </div>
+      </form>
+
+      <div class="success" id="success-card" role="status" aria-live="polite">
+        <h2>Got it. <span class="accent">See you on the call.</span></h2>
+        <p>Your intake is in. I'll review before our call and come prepared to spend the 30 minutes on mechanism naming, hook selection, and live voice work.</p>
+        <p>If you haven't booked the call yet, the link is in the email I sent. If you need it again, reply to that email and I'll resend.</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; Randy Kopplin · <a href="/">The Ghostwriter's Desk</a>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('intake-form');
+    var success = document.getElementById('success-card');
+    var errorBox = document.getElementById('form-error');
+    var submitBtn = document.getElementById('submit-btn');
+
+    function showError(msg) {
+      errorBox.textContent = msg;
+      errorBox.classList.add('show');
+      window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
+    }
+    function clearError() {
+      errorBox.classList.remove('show');
+      errorBox.textContent = '';
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      clearError();
+
+      var data = new FormData(form);
+      var payload = {};
+      data.forEach(function (value, key) {
+        payload[key] = typeof value === 'string' ? value.trim() : value;
+      });
+
+      if (!payload.email || payload.email.indexOf('@') === -1) {
+        showError('Please enter the email address you applied with.');
+        document.getElementById('email').focus();
+        return;
+      }
+      var requiredKeys = ['firm_context', 'voice_samples', 'ideal_client', 'myth', 'war_story', 'unique_process', 'stewardship_offer'];
+      for (var i = 0; i < requiredKeys.length; i++) {
+        if (!payload[requiredKeys[i]]) {
+          showError('A required field is missing. Please scroll up and fill in every question.');
+          return;
+        }
+      }
+
+      submitBtn.disabled = true;
+      var originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Submitting…';
+
+      try {
+        var res = await fetch('/api/intake', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          success.classList.add('show');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+          var errBody = await res.json().catch(function () { return {}; });
+          showError(errBody.error || 'Something went wrong. Please try again in a moment.');
+        }
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        showError('Network error. Please check your connection and try again.');
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
