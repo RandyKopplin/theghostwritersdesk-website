@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Apply — The Ghostwriter's Desk | Randy Kopplin</title>
+<meta name="description" content="Four minutes. Five questions. Straight yes-or-no on fit within 48 hours. Application form for The Ghostwriter's Desk services.">
+<meta property="og:title" content="Apply — The Ghostwriter's Desk">
+<meta property="og:description" content="Four minutes. Five questions. Straight yes-or-no on fit within 48 hours.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theghostwritersdesk.com/apply">
+<meta name="robots" content="noindex,follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700;800;900&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #f79546;
+    --orange-dim: rgba(247,149,70,0.55);
+    --bg-0: #0a0a0a;
+    --bg-1: #111111;
+    --bg-2: #161616;
+    --bg-card: #1a1a1a;
+    --border: rgba(255,255,255,0.07);
+    --border-warm: rgba(247,149,70,0.25);
+    --white: #ffffff;
+    --text: rgba(255,255,255,0.82);
+    --muted: rgba(255,255,255,0.45);
+    --display: 'Barlow', sans-serif;
+    --body: 'DM Sans', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg-0);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(247,149,70,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(247,149,70,0.035) 1px, transparent 1px);
+    background-size: 52px 52px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body::after {
+    content: '';
+    position: fixed;
+    top: -300px; left: -300px;
+    width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(247,149,70,0.08) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  a { color: var(--orange); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  strong { color: var(--white); font-weight: 600; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 5vw;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 14px;
+    font-family: var(--display); font-weight: 800;
+    font-size: 16px; letter-spacing: -0.01em;
+  }
+  .nav-brand { color: var(--white); }
+  .nav-brand span { color: var(--orange); }
+  .nav-divider { color: var(--muted); font-size: 14px; }
+  .nav-crumb {
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  }
+  .nav-crumb a { color: var(--muted); }
+  .nav-crumb.active { color: var(--orange); }
+
+  /* MAIN */
+  main { position: relative; z-index: 1; padding-top: 80px; padding-bottom: 60px; }
+  .container { max-width: 720px; margin: 0 auto; padding: 0 5vw; }
+
+  /* HERO */
+  .hero { padding: 64px 0 48px; text-align: center; }
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--mono); font-weight: 500; font-size: 11px;
+    letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange);
+    padding: 8px 16px; border: 1.5px solid var(--orange-dim); border-radius: 50px;
+  }
+  .hero .outcome-line {
+    font-family: var(--display); font-weight: 800;
+    font-size: clamp(22px, 3vw, 32px); line-height: 1.2;
+    letter-spacing: -0.01em; color: var(--orange);
+    margin-top: 20px; margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(36px, 5vw, 60px); line-height: 1.05;
+    letter-spacing: -0.025em; color: var(--white);
+    margin-bottom: 22px;
+  }
+  .hero h1 .accent { color: var(--orange); }
+  .hero .subhead {
+    font-family: var(--body); font-weight: 400;
+    font-size: clamp(17px, 1.9vw, 20px); line-height: 1.55;
+    color: var(--text); max-width: 580px;
+    margin: 0 auto;
+  }
+
+  /* FORM CARD */
+  .form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 44px;
+    margin-top: 48px;
+  }
+  @media (max-width: 600px) { .form-card { padding: 28px 22px; } }
+
+  .field { margin-bottom: 36px; }
+  .field:last-of-type { margin-bottom: 28px; }
+  .field-label {
+    display: block;
+    font-family: var(--display); font-weight: 800;
+    font-size: 18px; color: var(--white);
+    margin-bottom: 6px; line-height: 1.3;
+  }
+  .field-label .num {
+    color: var(--orange); font-family: var(--mono);
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-right: 10px; vertical-align: middle;
+  }
+  .field-hint {
+    font-size: 14px; color: var(--muted);
+    margin-bottom: 14px; line-height: 1.5;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    width: 100%;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-family: var(--body); font-size: 16px;
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+  input::placeholder, textarea::placeholder { color: var(--muted); }
+  input:focus, textarea:focus, select:focus { border-color: var(--orange-dim); }
+  textarea { min-height: 120px; resize: vertical; line-height: 1.5; }
+
+  .field-grid-2 {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  }
+  @media (max-width: 600px) { .field-grid-2 { grid-template-columns: 1fr; } }
+
+  /* RADIO GROUP */
+  .radio-group { display: flex; flex-direction: column; gap: 10px; }
+  .radio-option {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 14px 18px;
+    background: var(--bg-1);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .radio-option:hover { border-color: var(--orange-dim); }
+  .radio-option input[type="radio"] {
+    appearance: none; -webkit-appearance: none;
+    flex-shrink: 0;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid var(--muted);
+    margin-top: 3px;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.15s ease;
+  }
+  .radio-option input[type="radio"]:checked { border-color: var(--orange); }
+  .radio-option input[type="radio"]:checked::after {
+    content: '';
+    position: absolute; top: 2.5px; left: 2.5px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--orange);
+  }
+  .radio-option:has(input:checked) {
+    border-color: var(--orange);
+    background: rgba(247,149,70,0.06);
+  }
+  .radio-option .radio-label {
+    font-size: 15px; color: var(--text); line-height: 1.5;
+  }
+
+  #problem_other_wrap { display: none; margin-top: 12px; }
+  #problem_other_wrap.show { display: block; }
+
+  /* HONEYPOT */
+  .honeypot {
+    position: absolute; left: -9999px; top: -9999px;
+    width: 1px; height: 1px; opacity: 0;
+  }
+
+  /* SUBMIT */
+  .submit-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .cta-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--bg-0);
+    font-family: var(--body); font-weight: 700;
+    font-size: 16px; letter-spacing: 0.02em;
+    padding: 18px 36px; border: 0; border-radius: 50px;
+    cursor: pointer;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+  }
+  .cta-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+  .cta-btn:disabled { opacity: 0.5; cursor: wait; transform: none; }
+  .submit-note {
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+  }
+
+  .alert {
+    display: none;
+    background: rgba(255, 76, 76, 0.08);
+    border: 1px solid rgba(255, 76, 76, 0.35);
+    color: #ffc8c8;
+    padding: 14px 18px; border-radius: 8px;
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+  .alert.show { display: block; }
+
+  /* SUCCESS */
+  .success {
+    display: none;
+    background: rgba(247,149,70,0.08);
+    border: 1px solid var(--border-warm);
+    border-radius: 16px;
+    padding: 44px;
+    margin-top: 48px;
+    text-align: center;
+  }
+  .success.show { display: block; }
+  .success h2 {
+    font-family: var(--display); font-weight: 900;
+    font-size: clamp(28px, 4vw, 40px);
+    color: var(--white); line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .success h2 .accent { color: var(--orange); }
+  .success p { font-size: 17px; line-height: 1.6; margin-bottom: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .success p:last-child { margin-bottom: 0; }
+  .success a { color: var(--orange); border-bottom: 1px solid var(--orange-dim); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 5vw;
+    text-align: center;
+    color: var(--muted); font-size: 13px;
+    position: relative; z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <a href="/" style="text-decoration:none; color:inherit;"><span class="nav-brand">Randy <span>Kopplin</span></span></a>
+    <span class="nav-divider">·</span>
+    <span class="nav-crumb"><a href="/">Ghostwriter's Desk</a></span>
+    <span class="nav-divider">·</span>
+    <span class="nav-crumb active">Apply</span>
+  </div>
+</nav>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">🖋 Application</div>
+      <p class="outcome-line">Four minutes. Five questions.</p>
+      <h1>Apply for a <span class="accent">Ghostwriter's Desk</span> service.</h1>
+      <p class="subhead">Straight yes-or-no on fit within 48 hours. If we're a fit, the next step is a 60-minute discovery call (no payment yet). If we're not, I tell you why and point you elsewhere.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+
+      <div class="alert" id="form-error" role="alert"></div>
+
+      <form class="form-card" id="apply-form" novalidate>
+
+        <!-- Q1: Name, Firm, URL -->
+        <div class="field">
+          <label class="field-label" for="name"><span class="num">01</span>Your name, firm, and firm website.</label>
+          <p class="field-hint">All three help me prepare for the call. Firm URL helps me see your work before we talk.</p>
+          <div class="field-grid-2" style="margin-bottom: 12px;">
+            <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name">
+            <input type="text" id="firm" name="firm" placeholder="Firm name" required autocomplete="organization">
+          </div>
+          <input type="url" id="firm_url" name="firm_url" placeholder="https://yourfirm.com" autocomplete="url">
+        </div>
+
+        <!-- Q2: Service interest -->
+        <div class="field">
+          <label class="field-label"><span class="num">02</span>Which service are you applying for?</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="service_interest" value="The Client Primer Build" required>
+              <span class="radio-label"><strong>The Client Primer Build</strong> — $1,995 flat, 5-day email course delivered in 21 days</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="service_interest" value="Authority Newsletter — Standard">
+              <span class="radio-label"><strong>Authority Newsletter — Standard</strong> — $2,500–3,000/month, two newsletters monthly</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="service_interest" value="Authority Newsletter — Premium">
+              <span class="radio-label"><strong>Authority Newsletter — Premium</strong> — $4,000–5,000/month, weekly newsletter + LinkedIn + quarterly strategy</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="service_interest" value="The Roadmap Book Build">
+              <span class="radio-label"><strong>The Roadmap Book Build</strong> — custom 36-page Project Feasibility Roadmap</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="service_interest" value="Not sure">
+              <span class="radio-label"><strong>Not sure yet</strong> — help me pick based on my other answers</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Q3: Niche + ICP -->
+        <div class="field">
+          <label class="field-label" for="niche_icp"><span class="num">03</span>What kind of work do you do, and who is the client you want more of?</label>
+          <p class="field-hint">Be specific. The more concrete your answer, the more useful the call.</p>
+          <textarea id="niche_icp" name="niche_icp" required placeholder="Senior-living architecture for developers and operators who underwrite to twenty-year operating margins."></textarea>
+        </div>
+
+        <!-- Q4: Problem -->
+        <div class="field">
+          <label class="field-label"><span class="num">04</span>What problem are you trying to solve right now?</label>
+          <div class="radio-group">
+            <label class="radio-option">
+              <input type="radio" name="problem" value="Filter cold inquiries" required>
+              <span class="radio-label">I need to filter cold inquiries before they eat my time</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="problem" value="Convert prospects to paid audits">
+              <span class="radio-label">I need to convert prospects into paid audits instead of free proposals</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="problem" value="Build compounding authority">
+              <span class="radio-label">I need authority content that compounds over the next twelve months</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="problem" value="Not sure">
+              <span class="radio-label">I'm not sure yet, but I want to fix my marketing</span>
+            </label>
+            <label class="radio-option">
+              <input type="radio" name="problem" value="Other" id="problem_other_radio">
+              <span class="radio-label">Something else (please describe)</span>
+            </label>
+          </div>
+          <div id="problem_other_wrap">
+            <textarea id="problem_other" name="problem_other" placeholder="Tell me what you're trying to solve..."></textarea>
+          </div>
+        </div>
+
+        <!-- Q5: Email + Phone -->
+        <div class="field">
+          <label class="field-label" for="email"><span class="num">05</span>Best email and phone.</label>
+          <p class="field-hint">For my reply within 48 hours. Phone is optional.</p>
+          <div class="field-grid-2">
+            <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+            <input type="tel" id="phone" name="phone" placeholder="(optional) +1 555 555 5555" autocomplete="tel">
+          </div>
+        </div>
+
+        <!-- Honeypot (bots fill this, humans don't see it) -->
+        <input type="text" name="website_url" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <!-- Hidden source_page from URL ?source_page=X -->
+        <input type="hidden" name="source_page" id="source_page" value="">
+
+        <div class="submit-row">
+          <button type="submit" class="cta-btn" id="submit-btn">Submit application →</button>
+          <span class="submit-note">48-hour response</span>
+        </div>
+      </form>
+
+      <div class="success" id="success-card" role="status" aria-live="polite">
+        <h2>Got it. <span class="accent">Reply within 48 hours.</span></h2>
+        <p>An auto-confirmation just landed in your inbox with my direct contact details. If anything changes on your end before I respond, reply to that email directly.</p>
+        <p>If you'd rather skip ahead and schedule the 15-minute fit-check call now while it's fresh, <a href="/book">book it here</a>.</p>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; Randy Kopplin · <a href="/">The Ghostwriter's Desk</a>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('apply-form');
+    var success = document.getElementById('success-card');
+    var errorBox = document.getElementById('form-error');
+    var submitBtn = document.getElementById('submit-btn');
+
+    // Pre-fill source_page from URL parameter
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var sourcePage = params.get('source_page') || '';
+      document.getElementById('source_page').value = sourcePage;
+    } catch (e) { /* old browsers: leave empty */ }
+
+    // Show/hide "Other" textarea based on problem radio selection
+    var otherRadio = document.getElementById('problem_other_radio');
+    var otherWrap = document.getElementById('problem_other_wrap');
+    document.querySelectorAll('input[name="problem"]').forEach(function (r) {
+      r.addEventListener('change', function () {
+        if (otherRadio.checked) {
+          otherWrap.classList.add('show');
+        } else {
+          otherWrap.classList.remove('show');
+        }
+      });
+    });
+
+    function showError(msg) {
+      errorBox.textContent = msg;
+      errorBox.classList.add('show');
+      window.scrollTo({ top: form.offsetTop - 100, behavior: 'smooth' });
+    }
+    function clearError() {
+      errorBox.classList.remove('show');
+      errorBox.textContent = '';
+    }
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      clearError();
+
+      var data = new FormData(form);
+      var payload = {};
+      data.forEach(function (value, key) {
+        payload[key] = typeof value === 'string' ? value.trim() : value;
+      });
+
+      // Light client-side validation (server does authoritative validation)
+      if (!payload.email || payload.email.indexOf('@') === -1) {
+        showError('Please enter a valid email address.');
+        document.getElementById('email').focus();
+        return;
+      }
+      if (!payload.name || !payload.firm || !payload.service_interest || !payload.niche_icp || !payload.problem) {
+        showError('A required field is missing. Please scroll up and fill in everything marked with a question number.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      var originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Submitting…';
+
+      try {
+        var res = await fetch('/api/apply', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok) {
+          form.style.display = 'none';
+          success.classList.add('show');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+          var errBody = await res.json().catch(function () { return {}; });
+          showError(errBody.error || 'Something went wrong. Please try again in a moment.');
+        }
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        showError('Network error. Please check your connection and try again.');
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
