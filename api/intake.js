@@ -52,7 +52,7 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  // 6. Env-var check (detail to logs only)
+  // 6. Env-var check — verbose for diagnostic, revert to generic after wiring confirmed
   const token = process.env.MAILERLITE_API_TOKEN;
   const groupId = process.env.MAILERLITE_INTAKE_GROUP_ID;
   if (!token || !groupId) {
@@ -60,7 +60,10 @@ module.exports = async function handler(req, res) {
     if (!token) missing.push("MAILERLITE_API_TOKEN");
     if (!groupId) missing.push("MAILERLITE_INTAKE_GROUP_ID");
     console.error("Missing env vars:", missing.join(", "));
-    return res.status(500).json({ ok: false, error: "Server misconfigured" });
+    return res.status(500).json({
+      ok: false,
+      error: `Server misconfigured: missing ${missing.join(", ")}`
+    });
   }
 
   // 7. Upsert subscriber to MailerLite v3 with intake fields + Intake Completed group.
