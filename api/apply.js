@@ -89,7 +89,13 @@ module.exports = async function handler(req, res) {
     if (!mlResponse.ok) {
       const errBody = await mlResponse.text();
       console.error("MailerLite error:", mlResponse.status, errBody);
-      return res.status(502).json({ ok: false, error: "Application service unavailable" });
+      // Temporary verbose response so wiring failures self-diagnose.
+      // Revert to generic message after the funnel is confirmed working.
+      return res.status(502).json({
+        ok: false,
+        error: "Application service unavailable",
+        debug: { status: mlResponse.status, mlError: String(errBody).substring(0, 800) }
+      });
     }
 
     return res.status(200).json({ ok: true });
