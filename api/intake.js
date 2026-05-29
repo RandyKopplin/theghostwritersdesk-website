@@ -1,19 +1,27 @@
 // Vercel serverless function — handles The Ghostwriter's Desk Discovery Intake at /intake.
 //
-// Accepts a JSON POST from the intake page. Upserts the existing applicant record in
-// MailerLite (keyed on email) with the seven intake custom fields, and adds the
-// subscriber to the Intake Completed group.
+// Two-step flow:
+//   1. POST subscriber upsert to MailerLite (keyed on email). Fields are truncated to 1023
+//      chars to fit MailerLite's hard limit; the full content goes via email below. The
+//      subscriber is also added to the Intake Completed group.
+//   2. POST a transactional email to Randy via Resend with the FULL intake content. This
+//      is the load-bearing notification — MailerLite's automation emails can only go to
+//      the subscriber, never to the workspace owner, so the notification cannot live in
+//      MailerLite. Resend handles it.
 //
 // Required environment variables (set in Vercel project settings):
-//   MAILERLITE_API_TOKEN              — Bearer token from MailerLite v3 (reused from /api/apply)
+//   MAILERLITE_API_TOKEN              — Bearer token from MailerLite v3
 //   MAILERLITE_INTAKE_GROUP_ID        — numeric group ID for Intake Completed
+//   RESEND_API_KEY                    — Bearer token from Resend
 //
 // MailerLite custom fields expected on the account:
 //   firm_context, voice_samples, ideal_client, myth, war_story,
 //   unique_process, stewardship_offer
-//   (Plus the built-in "name" attribute, optionally re-captured here.)
 
 const MAILERLITE_ENDPOINT = "https://connect.mailerlite.com/api/subscribers";
+const RESEND_ENDPOINT = "https://api.resend.com/emails";
+const NOTIFICATION_FROM = "Ghostwriter's Desk Intake <intake@aeclogix.com>";
+const NOTIFICATION_TO = "randy@randykopplin.com";
 
 module.exports = async function handler(req, res) {
   // 1. Method check
@@ -30,7 +38,7 @@ module.exports = async function handler(req, res) {
     return res.status(200).json({ ok: true });
   }
 
-  // 4. Email validation (this email must match the original application's email)
+  // 4. Email validation
   const email = body.email && String(body.email).trim().toLowerCase();
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ ok: false, error: "Valid email required" });
@@ -52,113 +60,140 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  // 6. Env-var check — verbose for diagnostic, revert to generic after wiring confirmed
-  const token = process.env.MAILERLITE_API_TOKEN;
-  const groupId = process.env.MAILERLITE_INTAKE_GROUP_ID;
-  if (!token || !groupId) {
+  // 6. Env-var check
+  const mlToken = process.env.MAILERLITE_API_TOKEN;
+  const mlGroupId = process.env.MAILERLITE_INTAKE_GROUP_ID;
+  const resendKey = process.env.RESEND_API_KEY;
+  if (!mlToken || !mlGroupId || !resendKey) {
     const missing = [];
-    if (!token) missing.push("MAILERLITE_API_TOKEN");
-    if (!groupId) missing.push("MAILERLITE_INTAKE_GROUP_ID");
+    if (!mlToken) missing.push("MAILERLITE_API_TOKEN");
+    if (!mlGroupId) missing.push("MAILERLITE_INTAKE_GROUP_ID");
+    if (!resendKey) missing.push("RESEND_API_KEY");
     console.error("Missing env vars:", missing.join(", "));
     return res.status(500).json({
       ok: false,
-      error: `Server misconfigured: missing ${missing.join(", ")}`
+      error: `Server misconfigured: missing ${missing.join(", ")}`,
     });
   }
 
-  // 7. Upsert subscriber to MailerLite v3 with intake fields + Intake Completed group.
-  // POST /api/subscribers performs an upsert: if the email already exists (which it
-  // should, since the applicant came through /api/apply first), the existing fields
-  // are updated and the subscriber is added to the new group while remaining in
-  // the Applications group.
-  // MailerLite v3 caps each custom text field at 1024 characters. Real intake
-  // answers (voice samples, war stories) routinely exceed that, so we build one
-  // concatenated intake-content string with section headers and chunk it across
-  // the 7 existing field names. The MailerLite email template just concatenates
-  // these 7 fields in order to reassemble the full intake content.
-  //
-  // Total capacity: 7 × 1023 chars = ~7,161 chars. Sufficient for any realistic
-  // intake. If content exceeds capacity, the last chunk is marked as truncated.
+  // 7. Helper — truncate for MailerLite's 1024-char field cap.
+  // Full content goes via email; MailerLite is the truncated record for dashboard
+  // visibility and future segmentation.
+  const truncateForMailerLite = (s) => {
+    const trimmed = String(s || "").trim();
+    if (trimmed.length <= 1023) return trimmed;
+    return trimmed.substring(0, 1007) + " [...see email]";
+  };
+
+  // 8. Build the full intake content for the email body
+  const fullIntakeBody = [
+    "NEW DISCOVERY INTAKE COMPLETED",
+    "",
+    `Email:  ${email}`,
+    "",
+    "INTAKE RESPONSES:",
+    "",
+    "--- FIRM CONTEXT ---",
+    String(body.firm_context).trim(),
+    "",
+    "--- VOICE SAMPLES ---",
+    String(body.voice_samples).trim(),
+    "",
+    "--- IDEAL CLIENT ---",
+    String(body.ideal_client).trim(),
+    "",
+    "--- MYTH ---",
+    String(body.myth).trim(),
+    "",
+    "--- WAR STORY ---",
+    String(body.war_story).trim(),
+    "",
+    "--- UNIQUE PROCESS ---",
+    String(body.unique_process).trim(),
+    "",
+    "--- STEWARDSHIP + PAID OFFER ---",
+    String(body.stewardship_offer).trim(),
+    "",
+  ].join("\n");
+
+  // 9. Upsert to MailerLite (truncated fields, group membership)
   try {
-    const intakeContent = [
-      "--- FIRM CONTEXT ---",
-      String(body.firm_context).trim(),
-      "",
-      "--- VOICE SAMPLES ---",
-      String(body.voice_samples).trim(),
-      "",
-      "--- IDEAL CLIENT ---",
-      String(body.ideal_client).trim(),
-      "",
-      "--- MYTH ---",
-      String(body.myth).trim(),
-      "",
-      "--- WAR STORY ---",
-      String(body.war_story).trim(),
-      "",
-      "--- UNIQUE PROCESS ---",
-      String(body.unique_process).trim(),
-      "",
-      "--- STEWARDSHIP + PAID OFFER ---",
-      String(body.stewardship_offer).trim(),
-    ].join("\n");
-
-    const CHUNK_SIZE = 1023;
-    const CHUNK_NAMES = [
-      "firm_context",
-      "voice_samples",
-      "ideal_client",
-      "myth",
-      "war_story",
-      "unique_process",
-      "stewardship_offer",
-    ];
-    const TRUNCATION_MARKER = " [...content truncated]";
-
-    const chunks = {};
-    for (let i = 0; i < CHUNK_NAMES.length; i++) {
-      chunks[CHUNK_NAMES[i]] = intakeContent.substring(
-        i * CHUNK_SIZE,
-        (i + 1) * CHUNK_SIZE
-      ) || "";
-    }
-    // Mark truncation if content exceeds total capacity
-    if (intakeContent.length > CHUNK_NAMES.length * CHUNK_SIZE) {
-      const last = CHUNK_NAMES[CHUNK_NAMES.length - 1];
-      chunks[last] = chunks[last].substring(0, CHUNK_SIZE - TRUNCATION_MARKER.length) + TRUNCATION_MARKER;
-      console.warn(`[intake] Content (${intakeContent.length} chars) exceeded capacity (${CHUNK_NAMES.length * CHUNK_SIZE}) for ${email}`);
-    }
-
-    const payload = {
+    const mlPayload = {
       email: email,
-      fields: chunks,
-      groups: [String(groupId)],
+      fields: {
+        firm_context: truncateForMailerLite(body.firm_context),
+        voice_samples: truncateForMailerLite(body.voice_samples),
+        ideal_client: truncateForMailerLite(body.ideal_client),
+        myth: truncateForMailerLite(body.myth),
+        war_story: truncateForMailerLite(body.war_story),
+        unique_process: truncateForMailerLite(body.unique_process),
+        stewardship_offer: truncateForMailerLite(body.stewardship_offer),
+      },
+      groups: [String(mlGroupId)],
     };
 
     const mlResponse = await fetch(MAILERLITE_ENDPOINT, {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${mlToken}`,
         "Content-Type": "application/json",
-        "Accept": "application/json",
+        Accept: "application/json",
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(mlPayload),
     });
 
     if (!mlResponse.ok) {
       const errBody = await mlResponse.text();
       console.error("MailerLite error:", mlResponse.status, errBody);
-      // Temporary verbose response so wiring failures self-diagnose.
       return res.status(502).json({
         ok: false,
         error: "Intake service unavailable",
-        debug: { status: mlResponse.status, mlError: String(errBody).substring(0, 800) }
+        debug: { source: "mailerlite", status: mlResponse.status, mlError: String(errBody).substring(0, 800) },
       });
     }
-
-    return res.status(200).json({ ok: true });
   } catch (err) {
-    console.error("Intake handler exception:", err);
-    return res.status(500).json({ ok: false, error: "Intake submission failed" });
+    console.error("MailerLite handler exception:", err);
+    return res.status(500).json({ ok: false, error: "Intake submission failed (mailerlite)" });
   }
+
+  // 10. Send notification email to Randy via Resend with the FULL content
+  try {
+    const resendPayload = {
+      from: NOTIFICATION_FROM,
+      to: [NOTIFICATION_TO],
+      reply_to: email,
+      subject: `New Intake — ${email}`,
+      text: fullIntakeBody,
+    };
+
+    const resendResponse = await fetch(RESEND_ENDPOINT, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${resendKey}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(resendPayload),
+    });
+
+    if (!resendResponse.ok) {
+      const errBody = await resendResponse.text();
+      console.error("Resend error:", resendResponse.status, errBody);
+      // MailerLite already succeeded; report a soft failure but still 200 so the
+      // user doesn't see an error on the form. The MailerLite record is the
+      // recoverable source of truth.
+      return res.status(200).json({
+        ok: true,
+        warning: "Subscriber recorded, but notification email delivery failed. See server logs.",
+      });
+    }
+  } catch (err) {
+    console.error("Resend handler exception:", err);
+    return res.status(200).json({
+      ok: true,
+      warning: "Subscriber recorded, but notification email delivery threw. See server logs.",
+    });
+  }
+
+  return res.status(200).json({ ok: true });
 };
