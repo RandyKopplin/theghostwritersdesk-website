@@ -71,18 +71,67 @@ module.exports = async function handler(req, res) {
   // should, since the applicant came through /api/apply first), the existing fields
   // are updated and the subscriber is added to the new group while remaining in
   // the Applications group.
+  // MailerLite v3 caps each custom text field at 1024 characters. Real intake
+  // answers (voice samples, war stories) routinely exceed that, so we build one
+  // concatenated intake-content string with section headers and chunk it across
+  // the 7 existing field names. The MailerLite email template just concatenates
+  // these 7 fields in order to reassemble the full intake content.
+  //
+  // Total capacity: 7 × 1023 chars = ~7,161 chars. Sufficient for any realistic
+  // intake. If content exceeds capacity, the last chunk is marked as truncated.
   try {
+    const intakeContent = [
+      "--- FIRM CONTEXT ---",
+      String(body.firm_context).trim(),
+      "",
+      "--- VOICE SAMPLES ---",
+      String(body.voice_samples).trim(),
+      "",
+      "--- IDEAL CLIENT ---",
+      String(body.ideal_client).trim(),
+      "",
+      "--- MYTH ---",
+      String(body.myth).trim(),
+      "",
+      "--- WAR STORY ---",
+      String(body.war_story).trim(),
+      "",
+      "--- UNIQUE PROCESS ---",
+      String(body.unique_process).trim(),
+      "",
+      "--- STEWARDSHIP + PAID OFFER ---",
+      String(body.stewardship_offer).trim(),
+    ].join("\n");
+
+    const CHUNK_SIZE = 1023;
+    const CHUNK_NAMES = [
+      "firm_context",
+      "voice_samples",
+      "ideal_client",
+      "myth",
+      "war_story",
+      "unique_process",
+      "stewardship_offer",
+    ];
+    const TRUNCATION_MARKER = " [...content truncated]";
+
+    const chunks = {};
+    for (let i = 0; i < CHUNK_NAMES.length; i++) {
+      chunks[CHUNK_NAMES[i]] = intakeContent.substring(
+        i * CHUNK_SIZE,
+        (i + 1) * CHUNK_SIZE
+      ) || "";
+    }
+    // Mark truncation if content exceeds total capacity
+    if (intakeContent.length > CHUNK_NAMES.length * CHUNK_SIZE) {
+      const last = CHUNK_NAMES[CHUNK_NAMES.length - 1];
+      chunks[last] = chunks[last].substring(0, CHUNK_SIZE - TRUNCATION_MARKER.length) + TRUNCATION_MARKER;
+      console.warn(`[intake] Content (${intakeContent.length} chars) exceeded capacity (${CHUNK_NAMES.length * CHUNK_SIZE}) for ${email}`);
+    }
+
     const payload = {
       email: email,
-      fields: {
-        firm_context: String(body.firm_context).trim(),
-        voice_samples: String(body.voice_samples).trim(),
-        ideal_client: String(body.ideal_client).trim(),
-        myth: String(body.myth).trim(),
-        war_story: String(body.war_story).trim(),
-        unique_process: String(body.unique_process).trim(),
-        stewardship_offer: String(body.stewardship_offer).trim(),
-      },
+      fields: chunks,
       groups: [String(groupId)],
     };
 
