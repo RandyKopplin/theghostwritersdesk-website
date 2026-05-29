@@ -70,10 +70,7 @@ module.exports = async function handler(req, res) {
     if (!mlGroupId) missing.push("MAILERLITE_INTAKE_GROUP_ID");
     if (!resendKey) missing.push("RESEND_API_KEY");
     console.error("Missing env vars:", missing.join(", "));
-    return res.status(500).json({
-      ok: false,
-      error: `Server misconfigured: missing ${missing.join(", ")}`,
-    });
+    return res.status(500).json({ ok: false, error: "Server misconfigured" });
   }
 
   // 7. Helper — truncate for MailerLite's 1024-char field cap.
@@ -145,11 +142,7 @@ module.exports = async function handler(req, res) {
     if (!mlResponse.ok) {
       const errBody = await mlResponse.text();
       console.error("MailerLite error:", mlResponse.status, errBody);
-      return res.status(502).json({
-        ok: false,
-        error: "Intake service unavailable",
-        debug: { source: "mailerlite", status: mlResponse.status, mlError: String(errBody).substring(0, 800) },
-      });
+      return res.status(502).json({ ok: false, error: "Intake service unavailable" });
     }
   } catch (err) {
     console.error("MailerLite handler exception:", err);
